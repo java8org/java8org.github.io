@@ -1,0 +1,241 @@
+#gen {
+	color: black;
+}
+
+.plotdesc {
+	
+}
+
+#mce-EMAIL {
+	width: 200px !important;
+}
+
+#mce-success-response {
+	color: #336;
+	font-size: 12px;
+}
+
+#agreement {
+	cursor: default !important;
+}
+
+.navbar-brand {
+	padding: 12px !important;
+}
+
+.methodref {
+	font-weight: bold;
+}
+
+span.named {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.part1 {
+	color: #335;
+}
+
+.part2 {
+	color: #533;
+}
+
+.part3 {
+	color: #353;
+}
+
+.CodeMirror {
+	border: 1px solid black;
+	font-size: 13px;
+	height: 500px;
+}
+
+.eg_code,.eg_output {
+	padding: 5px !important;
+	background: #FFE !important;
+	border: none !important;
+}
+
+.download {
+	background: #585;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.readtut {
+	background: #768;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.dyno {
+	font-weight: bold;
+}
+
+.subtle {
+	color: #555;
+	font-size: 14px;
+}
+
+#title {
+	color: white !important;
+}
+
+.good {
+	color: green;
+}
+
+.mid {
+	color: #664;
+}
+
+.bad {
+	color: red;
+}
+
+#editor {
+	background-color: #FFF;
+}
+
+#output,#generated,#logs {
+	background-color: #eee;
+	border-width: 1px;
+	border-color: #ccc;
+}
+
+#dialog label,#dialog input {
+	display: block;
+}
+
+#dialog label {
+	margin-top: 0.5em;
+}
+
+#dialog input,#dialog textarea {
+	width: 95%;
+}
+
+.taby li .ui-icon-close {
+	float: left;
+	margin: 0.4em 0.2em 0 0;
+	cursor: pointer;
+}
+
+#add_tab {
+	cursor: pointer;
+}
+
+.taby {
+	background: transparent;
+	border: none;
+}
+
+.taby .ui-widget-header {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #c0c0c0;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+
+.taby .ui-tabs-nav .ui-state-default {
+	background: transparent;
+	border: none;
+}
+
+.taby .ui-tabs-nav .ui-state-active {
+	border: none;
+}
+
+.taby .ui-tabs-nav .ui-state-hover {
+	background: #AFA;
+	color: white;
+	border: none;
+}
+
+.taby .ui-tabs-nav .ui-state-default a {
+	color: #888;
+}
+
+.taby .ui-tabs-nav .ui-state-active a {
+	color: #459e00;
+}
+
+.taby .ui-tabs-nav li {
+	margin-top: 0.6em;
+	font-size: 80% !important;
+}
+
+.taby {
+	padding: 0px;
+	background: none;
+	border-width: 0px;
+}
+
+.taby .ui-tabs-nav {
+	padding-left: 0px;
+	background: transparent;
+	border-width: 0px 0px 1px 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+
+#codetabs .ui-tabs-nav {
+	border: none !important;
+}
+
+#tabs .ui-tabs-panel {
+	background: #f5f3e5;
+	border-width: 0px 1px 1px 1px;
+}
+
+canvas.editor {
+	/*	background-color: #EEF !important; */
+	border: 1px #CCC solid !important;
+	margin-left: 7px !important;
+}
+
+.ui-tabs-panel {
+	padding: 0px !important;
+}
+
+div.row {
+	padding: 0px !important;
+}
+
+nav {
+	margin-bottom: 0px !important;
+}
+
+.taby {
+	margin: 0px !important;
+}
+
+#tabs {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: none !important;
+}
+
+div.column,div.row,.viewpage {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: none !important;
+}
+
+.viewpage {
+	width: 98%;
+	height: 98%;
+}
+
+#codetabs,#codetabs .ui-tabs-panel {
+	border: none !important;
+	background: none !important;
+}
+
+#add_mod {
+	border: 1px solid #CCC;
+	margin-left: 5px;
+}
