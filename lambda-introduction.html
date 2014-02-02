@@ -69,8 +69,7 @@
 		<div class="col-md-9">
 			<div class="content">
 				<h2 class="title text-center">
-					<span class="latest">[LATEST ARTICLE]</span>
-					<span class="postName"> Java 8 Lambdas Introduction</span>
+					<span class="postName">Java 8 Lambdas Introduction</span>
 					<span class="author">
 						by
 						<a class="authorName" href="http://www.nikolche.com">Nikolche Mihajlovski</a>,
@@ -115,7 +114,44 @@ r.run();</code>
 					</div>
 				</div>
 
-				<div class="well full text-center"><a href="lambda-introduction.html">Read full article...</a></div>
+				<p>
+					Lambdas can be also used in the syntax form <code class="prettyprint">(params) -> expression</code> to implement a functional interface, e.g. <code class="prettyprint">Comparator&lt;Person&gt;</code>:
+				</p>
+
+				<div class="row">
+					<div class="col-md-6">
+						<p class="caption bad">Without Lambda:</p>
+						<pre class="prettyprint code">
+<code>public class Person {
+   public String name;
+   public int age;
+}
+
+List&lt;Person&gt; persons = ...
+
+Collections.sort(persons, new Comparator&lt;Person&lt;() {
+   public int compare(Person p1, Person p2){
+      return p1.name.compareTo(p2.name);
+   }
+});</code>
+</pre>
+					</div>
+					<div class="col-md-6">
+						<p class="caption good">With Lambda:</p>
+						<pre class="prettyprint code">
+<code>public class Person {
+   public String name;
+   public int age;
+}
+
+List&lt;Person&gt; persons = ...
+
+Collections.sort(persons, (p1, p2) -> p1.name.compareTo(p2.name));</code>
+</pre>
+					</div>
+				</div>
+
+				<p>The types of parameters <code class="prettyprint">p1</code> and <code class="prettyprint">p2</code> can be inferred since the implemented method is <code class="prettyprint">int compare (Person o1, Person o2)</code>, meaning the type of parameters <code class="prettyprint">p1</code> and <code class="prettyprint">p2</code> is <code class="prettyprint">Person</code>.</p>
 
 			</div>
 		</div>
@@ -126,6 +162,7 @@ r.run();</code>
 	<div class="row">
 		<div class="col-md-12">
 			<div id="footer" class="text-center">
+				<p>This article was published with permission of the author(s).</p>
 				<p>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be
 					trademarks of their respective owners.</p>
 			</div>
