@@ -27,10 +27,6 @@ ga('send', 'pageview');
 	}
 }(document, 'script', 'twitter-wjs');
 
-// PRETTY PRINT
-
-$(prettyPrint);
-
 // MAILCHIMP
 
 var fnames = new Array();

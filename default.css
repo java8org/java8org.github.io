@@ -1,5 +1,13 @@
+@import "bootstrap.min.css";
+
+@import "prettify.css";
+
 #mce-EMAIL {
 	width: 200px !important;
+}
+
+.navbar {
+	margin-bottom: 0px !important;
 }
 
 #mce-success-response {
@@ -7,6 +15,65 @@
 	font-size: 12px;
 }
 
-.code {
-	border: 1px dashed #AAA !important;
+.content {
+	margin-left: 15px;
+	margin-right: 15px;
+	padding-left: 10px;
+}
+
+span.title {
+	font-weight: bold;
+}
+
+span.latest {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+span.author {
+	font-style: italic;
+	font-size: 20px;
+}
+
+#unofficial {
+	font-weight: bold;
+}
+
+#footer {
+	font-style: italic;
+	margin: 10px !important;
+	padding: 0px !important;
+}
+
+pre.code {
+	border: 1px dashed #CCC !important;
+	padding: 10px !important;
+}
+
+.good {
+	color: green !important;
+}
+
+.bad {
+	color: #A55 !important;
+}
+
+.title {
+	margin-top: 15px !important;
+	color: #557 !important;
+	margin-bottom: 20px !important;
+}
+
+q {
+	font-style: italic;
+	font-weight: bold;
+}
+
+div.content p {
+	margin-top: 10px !important;
+}
+
+div.full {
+	font-size: 20px;
+	padding: 7px !important;
 }
