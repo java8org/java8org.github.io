@@ -8,7 +8,8 @@
 
 <link href="default.css" type="text/css" rel="stylesheet" />
 
-<title>Java 8 Resources</title>
+<title>Java 8 Resources | lambdas | method references | defender methods | streams</title>
+<meta name="description" content="Java 8 Resources (lambdas, method references, defender methods, streams)" />
 
 </head>
 
@@ -20,32 +21,6 @@
 			<a class="navbar-brand" href="/">Java 8 Resources</a>
 		</div>
 
-		<div id="mc_embed_signup" class="navbar-form navbar-left">
-
-			<form action="http://ohmdb.us3.list-manage1.com/subscribe/post?u=c2c27aa25fdef31d9513d6124&amp;id=ea2d68d2fd"
-				method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline"
-				target="_blank" novalidate
-			>
-
-				<div class="mc-field-group form-group">
-					<input type="email" value="" name="EMAIL" class="required email form-control input-sm" id="mce-EMAIL"
-						placeholder="Your e-mail address"
-					>
-					<input type="submit" value="Subscribe to newsletter" name="subscribe" id="mc-embedded-subscribe"
-						class="button btn btn-primary btn-sm"
-					></input>
-				</div>
-				<div id="mce-responses" class="clear">
-					<div class="response" id="mce-error-response" style="display: none"></div>
-					<div class="response" id="mce-success-response" style="display: none"></div>
-				</div>
-				<div style="position: absolute; left: -5000px;">
-					<input type="text" name="b_c2c27aa25fdef31d9513d6124_fdd36fe9b9" value="">
-				</div>
-				<div class="clear"></div>
-			</form>
-		</div>
-
 		<div class="navbar-header">
 			&nbsp;
 			<a href="https://twitter.com/share" class="twitter-share-button navbar-btn" data-url="http://www.java8.org"
@@ -54,82 +29,218 @@
 			<span class="g-plusone" data-size="medium"></span>
 			<script type="IN/Share" data-url="http://www.java8.org" data-counter="right"></script>
 		</div>
+		
+		<div class="navbar-header navbar-form" id="unofficial">This is NOT the Official Website of Java.</div>
 	</nav>
 
 	<div class="row">
 		<div class="col-md-12">
-			<div class="content">
-				<p id="unofficial" class="text-center">
-					This is NOT the Official Website of Java. This site contains content written by Java 8 enthusiasts, hosted
-					on <a href="https://github.com/java8org/java8org.github.io">Github</a>.
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-9">
-			<div class="content">
+<div class="row">
 				<h2 class="title text-center">
-					<span class="latest">[LATEST ARTICLE]</span>
-					<span class="postName"> Java 8 Lambdas Introduction</span>
-					<span class="author">
-						by
-						<a class="authorName" href="http://www.nikolche.com">Nikolche Mihajlovski</a>,
+					<span class="postName">Java 8 Cheatsheet</span>
+					<span class="author">by Nikolche Mihajlovski, 
 						<a href="http://www.ohmdb.com" class="authorCompany">OhmDB</a>
 					</span>
 				</h2>
 
-				<p>
-					Let's run some <code class="prettyprint">Runnable</code>! With Java 8, instead of using anonymous classes, we can use <q>lambdas</q>. The syntax
-					<code class="prettyprint">(params) -> statement</code>
-					is used to create an instance of
-					<code class="prettyprint">Runnable</code>
-					by implementing its
-					<code class="prettyprint">run</code>
-					method. This is possible only for interfaces that have only one method that must be implemented, and such
-					interfaces are called
-					<q>functional interfaces</q>
-					.
-				</p>
+</div><div class="row"><div class="col-md-12 text-center header">Lambda expression - easy way to implement single-method (aka functional) interface</div></div><div class="row">
 
-				<div class="row">
-					<div class="col-md-6">
-						<p class="caption bad">Without Lambda:</p>
-						<pre class="prettyprint code">
-<code>Runnable r = new Runnable() {
-   @Override
-   public void run() {
-      System.out.println("Hello!");
-   }
-};
+<div class="col-md-6 content">
+  <p class="caption badge">Lambda syntax</p>
+  <pre class="prettyprint code"><code>(parameters) -&gt; expression
+(parameters) -&gt; statement
+(parameters) -&gt; { statements }</code></pre>
+</div>
 
-r.run();</code>
-</pre>
-					</div>
-					<div class="col-md-6">
-						<p class="caption good">With Lambda:</p>
-						<pre class="prettyprint code">
-<code>Runnable r = () -> System.out.println("Hello!");
 
-r.run();</code>
-</pre>
-					</div>
-				</div>
 
-				<div class="well full text-center"><a href="lambda-introduction.html">Read full article...</a></div>
 
-			</div>
+<div class="col-md-6 content">
+  <p class="caption badge">Lambda expression examples</p>
+  <pre class="prettyprint code"><code>(int x, int y) -&gt; x + y
+() -&gt; System.out.println(&quot;hi &quot; + s);
+(String s) -&gt; { int n = s.length(); return n; }</code></pre>
+</div>
+
+
+</div><div class="row">
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Run a Runnable</p>
+  <pre class="prettyprint code"><code>Runnable r = () -&gt; System.out.println(&quot;Hello!&quot;);
+r.run();</code></pre>
+</div>
+
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">The PI function</p>
+  <pre class="prettyprint code"><code>Callable&lt;Double&gt; pi = () -&gt; 3.14;
+Double p = pi.call();</code></pre>
+</div>
+
+
+</div><div class="row">
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Sort strings by length</p>
+  <pre class="prettyprint code"><code>String[] words = {&quot;aaa&quot;, &quot;b&quot;, &quot;cc&quot;};
+Arrays.sort(words, (s1, s2) -&gt; s1.length() - s2.length());
+
+&#x2F;&#x2F; equivalent to:
+Arrays.sort(words, (String s1, String s2) -&gt; s1.length() - s2.length());</code></pre>
+</div>
+
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Effectively final variables can be referenced in lambdas</p>
+  <pre class="prettyprint code"><code>&#x2F;&#x2F; s is effectively final (not changed anywhere)
+String s = &quot;foo&quot;;
+
+&#x2F;&#x2F; s can be referenced in the lambda
+Runnable r = () -&gt; System.out.println(s);</code></pre>
+</div>
+
+
+</div><div class="row">
+
+</div><div class="row"><div class="col-md-12 text-center header">Method reference - easy way to use existing method in a functional way</div></div><div class="row">
+
+<div class="col-md-6 content">
+  <p class="caption badge">Static method reference</p>
+  <pre class="prettyprint code"><code>&#x2F;&#x2F; Class::staticMethod syntax
+Arrays.sort(items, Util::compareItems);
+
+&#x2F;&#x2F; equivalent to:
+Arrays.sort(items, (a, b) -&gt; Util.compareItems(a, b));</code></pre>
+</div>
+
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Instance method reference</p>
+  <pre class="prettyprint code"><code>&#x2F;&#x2F; instance::instanceMethod syntax
+items.forEach(System.out::print);
+
+&#x2F;&#x2F; equivalent to:
+items.forEach((x) -&gt; System.out.print(x));</code></pre>
+</div>
+
+
+</div><div class="row">
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Reference to a method of arbitrary instance</p>
+  <pre class="prettyprint code"><code>&#x2F;&#x2F; Class::instanceMethod syntax
+items.forEach(Item::publish);
+
+&#x2F;&#x2F; equivalent to:
+items.forEach((x) -&gt; { x.publish(); });</code></pre>
+</div>
+
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Constructor reference</p>
+  <pre class="prettyprint code"><code>ConstructorReference cref = Item::new;
+Item item = cref.constructor();</code></pre>
+</div>
+
+
+</div><div class="row">
+
+</div><div class="row"><div class="col-md-12 text-center header">Default method - interface method with default implementation</div></div><div class="row">
+
+<div class="col-md-6 content">
+  <p class="caption badge">Defining default methods in interfaces</p>
+  <pre class="prettyprint code"><code>interface Descriptive {
+
+  default String desc() {
+    return &quot;fantastic&quot;;
+  }
+
+}</code></pre>
+</div>
+
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Implementing interface with default method</p>
+  <pre class="prettyprint code"><code>class Item implements Descriptive { }
+
+Item x = new Item();
+
+&#x2F;&#x2F; prints &quot;fantastic&quot;
+System.out.println(x.desc());</code></pre>
+</div>
+
+
+</div><div class="row">
+
+</div><div class="row"><div class="col-md-12 text-center header">Stream - sequence of values</div></div><div class="row">
+
+<div class="col-md-6 content">
+  <p class="caption badge">Count the non-empty strings</p>
+  <pre class="prettyprint code"><code>List&lt;String&gt; strings = ...;
+int n = strings.stream().filter(x -&gt; !.isEmpty()).count();</code></pre>
+</div>
+
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Join item titles</p>
+  <pre class="prettyprint code"><code>List&lt;Item&gt; items = ...;
+String names = items.stream().map((x) -&gt; x.getTitle()).collect(Collectors.joining(&quot;, &quot;));</code></pre>
+</div>
+
+
+</div><div class="row">
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Get distinct countries from cities</p>
+  <pre class="prettyprint code"><code>List&lt;City&gt; cities = ...;
+List&lt;Country&gt; countries = cities.stream().map((c) -&gt; c.getCountry()).distinct().collect(Collectors.toList());</code></pre>
+</div>
+
+
+
+
+<div class="col-md-6 content">
+  <p class="caption badge">Get count, min, max, sum, and average statistics for items rating</p>
+  <pre class="prettyprint code"><code>List&lt;Item&gt; items = ...;
+IntSummaryStatistics stats = items.stream().mapToInt((x) -&gt; x.getRating()).summaryStatistics();</code></pre>
+</div>
+
+
+</div><div class="row">
+
+
+
+</div>
 		</div>
-
-		<div id="right" class="col-md-3"></div>
+		
 	</div>
 
 	<div class="row">
 		<div class="col-md-12">
 			<div id="footer" class="text-center">
-				<p>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be
-					trademarks of their respective owners.</p>
+				<p>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of
+					their respective owners.</p>
 			</div>
 		</div>
 	</div>

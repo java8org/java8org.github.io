@@ -1,0 +1,128 @@
+{{ x[2] ? '</div><div class="row"><div class="col-md-12 text-center header">' + x[2] + '</div></div><div class="row">' : ''}}
+
+<div class="col-md-6 content">
+  <p class="caption badge">{{escapeHtml(x[0])}}</p>
+  <pre class="prettyprint code"><code>{{escapeHtml(x[1])}}</code></pre>
+</div>
+
+{{ Math.round(i/2)*2==i ? '' : '\n</div><div class="row">\n' }}
+
+======================================
+
+Lambda syntax|
+(parameters) -> expression
+(parameters) -> statement
+(parameters) -> { statements }
+|Lambda expression - easy way to implement single-method (aka functional) interface
+---
+
+Lambda expression examples|
+(int x, int y) -> x + y
+() -> System.out.println("hi " + s);
+(String s) -> { int n = s.length(); return n; }
+
+---
+
+Run a Runnable|
+Runnable r = () -> System.out.println("Hello!");
+r.run();
+
+---
+
+The PI function|
+Callable<Double> pi = () -> 3.14;
+Double p = pi.call();
+---
+
+Sort strings by length|
+String[] words = {"aaa", "b", "cc"};
+Arrays.sort(words, (s1, s2) -> s1.length() - s2.length());
+
+// equivalent to:
+Arrays.sort(words, (String s1, String s2) -> s1.length() - s2.length());
+
+---
+
+Effectively final variables can be referenced in lambdas|
+// s is effectively final (not changed anywhere)
+String s = "foo";
+
+// s can be referenced in the lambda
+Runnable r = () -> System.out.println(s);
+
+---
+
+Static method reference|
+// Class::staticMethod syntax
+Arrays.sort(items, Util::compareItems);
+
+// equivalent to:
+Arrays.sort(items, (a, b) -> Util.compareItems(a, b));
+|Method reference - easy way to use existing method in a functional way
+
+---
+
+Instance method reference|
+// instance::instanceMethod syntax
+items.forEach(System.out::print);
+
+// equivalent to:
+items.forEach((x) -> System.out.print(x));
+
+---
+
+Reference to a method of arbitrary instance|
+// Class::instanceMethod syntax
+items.forEach(Item::publish);
+
+// equivalent to:
+items.forEach((x) -> { x.publish(); });
+
+---
+Constructor reference|
+ConstructorReference cref = Item::new;
+Item item = cref.constructor();
+
+---
+
+Defining default methods in interfaces|
+interface Descriptive {
+
+  default String desc() {
+    return "fantastic";
+  }
+
+}|Default method - interface method with default implementation
+
+---
+
+Implementing interface with default method|
+class Item implements Descriptive { }
+
+Item x = new Item();
+
+// prints "fantastic"
+System.out.println(x.desc());
+
+---
+
+Count the non-empty strings|
+List<String> strings = ...;
+int n = strings.stream().filter(x -> !.isEmpty()).count();
+|Stream - sequence of values
+
+---
+Join item titles|
+List<Item> items = ...;
+String names = items.stream().map((x) -> x.getTitle()).collect(Collectors.joining(", "));
+
+---
+Get distinct countries from cities|
+List<City> cities = ...;
+List<Country> countries = cities.stream().map((c) -> c.getCountry()).distinct().collect(Collectors.toList());
+
+---
+
+Get count, min, max, sum, and average statistics for items rating|
+List<Item> items = ...;
+IntSummaryStatistics stats = items.stream().mapToInt((x) -> x.getRating()).summaryStatistics();

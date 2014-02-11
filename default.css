@@ -15,10 +15,23 @@
 	font-size: 12px;
 }
 
-.content {
-	margin-left: 15px;
-	margin-right: 15px;
-	padding-left: 10px;
+.caption {
+	margin-left: 10px;
+	font-weight: bold;
+	
+	padding-bottom: 5px !important;
+	padding-top: 5px !important;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+	background: #EEE !important;
+	font-size: 13px !important;
+	color: #333 !important;
+	
+}
+
+.code {
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 span.title {
@@ -76,4 +89,13 @@ div.content p {
 div.full {
 	font-size: 20px;
 	padding: 7px !important;
+}
+
+div.header {
+	font-weight: bold;
+	font-size: 20px;
+	background-color: #DED !important;
+	color: #557 !important;
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
 }
