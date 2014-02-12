@@ -108,7 +108,7 @@ System.out.println(x.desc());
 
 Count the non-empty strings|
 List<String> strings = ...;
-int n = strings.stream().filter(x -> !.isEmpty()).count();
+int n = strings.stream().filter(x -> !x.isEmpty()).count();
 |Stream - sequence of values
 
 ---
