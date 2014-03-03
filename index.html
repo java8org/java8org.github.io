@@ -35,12 +35,12 @@
 	</nav>
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-9">
 <div class="row">
 				<h2 class="title text-center">
 					<span class="postName">Java 8 Cheatsheet</span>
 					<span class="author">by Nikolche Mihajlovski, 
-						<a href="http://www.ohmdb.com" class="authorCompany">OhmDB</a>
+						<a href="http://www.ohmdb.com"><img src="ohmdb-logo.png"/></a>
 					</span>
 					<a style="visibility: hidden;" href="https://plus.google.com/u/0/101896671685821826925?rel=author">Google</a>
 				</h2>
@@ -49,7 +49,7 @@
 
 <div class="col-md-6 content">
   <p class="caption badge">Lambda syntax</p>
-  <pre class="prettyprint code"><code>(parameters) -&gt; expression
+  <pre class="prettyprint code"><code class="language-java">(parameters) -&gt; expression
 (parameters) -&gt; statement
 (parameters) -&gt; { statements }</code></pre>
 </div>
@@ -59,7 +59,7 @@
 
 <div class="col-md-6 content">
   <p class="caption badge">Lambda expression examples</p>
-  <pre class="prettyprint code"><code>(int x, int y) -&gt; x + y
+  <pre class="prettyprint code"><code class="language-java">(int x, int y) -&gt; x + y
 () -&gt; System.out.println(&quot;hi &quot; + s);
 (String s) -&gt; { int n = s.length(); return n; }</code></pre>
 </div>
@@ -71,7 +71,7 @@
 
 <div class="col-md-6 content">
   <p class="caption badge">Run a Runnable</p>
-  <pre class="prettyprint code"><code>Runnable r = () -&gt; System.out.println(&quot;Hello!&quot;);
+  <pre class="prettyprint code"><code class="language-java">Runnable r = () -&gt; System.out.println(&quot;Hello!&quot;);
 r.run();</code></pre>
 </div>
 
@@ -80,7 +80,7 @@ r.run();</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">The PI function</p>
-  <pre class="prettyprint code"><code>Callable&lt;Double&gt; pi = () -&gt; 3.14;
+  <pre class="prettyprint code"><code class="language-java">Callable&lt;Double&gt; pi = () -&gt; 3.14;
 Double p = pi.call();</code></pre>
 </div>
 
@@ -91,7 +91,7 @@ Double p = pi.call();</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Sort strings by length</p>
-  <pre class="prettyprint code"><code>String[] words = {&quot;aaa&quot;, &quot;b&quot;, &quot;cc&quot;};
+  <pre class="prettyprint code"><code class="language-java">String[] words = {&quot;aaa&quot;, &quot;b&quot;, &quot;cc&quot;};
 Arrays.sort(words, (s1, s2) -&gt; s1.length() - s2.length());
 
 &#x2F;&#x2F; equivalent to:
@@ -103,7 +103,7 @@ Arrays.sort(words, (String s1, String s2) -&gt; s1.length() - s2.length());</cod
 
 <div class="col-md-6 content">
   <p class="caption badge">Effectively final variables can be referenced in lambdas</p>
-  <pre class="prettyprint code"><code>&#x2F;&#x2F; s is effectively final (not changed anywhere)
+  <pre class="prettyprint code"><code class="language-java">&#x2F;&#x2F; s is effectively final (not changed anywhere)
 String s = &quot;foo&quot;;
 
 &#x2F;&#x2F; s can be referenced in the lambda
@@ -117,7 +117,7 @@ Runnable r = () -&gt; System.out.println(s);</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Static method reference</p>
-  <pre class="prettyprint code"><code>&#x2F;&#x2F; Class::staticMethod syntax
+  <pre class="prettyprint code"><code class="language-java">&#x2F;&#x2F; Class::staticMethod syntax
 Arrays.sort(items, Util::compareItems);
 
 &#x2F;&#x2F; equivalent to:
@@ -129,7 +129,7 @@ Arrays.sort(items, (a, b) -&gt; Util.compareItems(a, b));</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Instance method reference</p>
-  <pre class="prettyprint code"><code>&#x2F;&#x2F; instance::instanceMethod syntax
+  <pre class="prettyprint code"><code class="language-java">&#x2F;&#x2F; instance::instanceMethod syntax
 items.forEach(System.out::print);
 
 &#x2F;&#x2F; equivalent to:
@@ -143,7 +143,7 @@ items.forEach((x) -&gt; System.out.print(x));</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Reference to a method of arbitrary instance</p>
-  <pre class="prettyprint code"><code>&#x2F;&#x2F; Class::instanceMethod syntax
+  <pre class="prettyprint code"><code class="language-java">&#x2F;&#x2F; Class::instanceMethod syntax
 items.forEach(Item::publish);
 
 &#x2F;&#x2F; equivalent to:
@@ -155,7 +155,7 @@ items.forEach((x) -&gt; { x.publish(); });</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Constructor reference</p>
-  <pre class="prettyprint code"><code>ConstructorReference cref = Item::new;
+  <pre class="prettyprint code"><code class="language-java">ConstructorReference cref = Item::new;
 Item item = cref.constructor();</code></pre>
 </div>
 
@@ -166,7 +166,7 @@ Item item = cref.constructor();</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Defining default methods in interfaces</p>
-  <pre class="prettyprint code"><code>interface Descriptive {
+  <pre class="prettyprint code"><code class="language-java">interface Descriptive {
 
   default String desc() {
     return &quot;fantastic&quot;;
@@ -180,7 +180,7 @@ Item item = cref.constructor();</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Implementing interface with default method</p>
-  <pre class="prettyprint code"><code>class Item implements Descriptive { }
+  <pre class="prettyprint code"><code class="language-java">class Item implements Descriptive { }
 
 Item x = new Item();
 
@@ -195,7 +195,7 @@ System.out.println(x.desc());</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Count the non-empty strings</p>
-  <pre class="prettyprint code"><code>List&lt;String&gt; strings = ...;
+  <pre class="prettyprint code"><code class="language-java">List&lt;String&gt; strings = ...;
 long n = strings.stream().filter(x -&gt; !x.isEmpty()).count();</code></pre>
 </div>
 
@@ -204,7 +204,7 @@ long n = strings.stream().filter(x -&gt; !x.isEmpty()).count();</code></pre>
 
 <div class="col-md-6 content">
   <p class="caption badge">Join item titles</p>
-  <pre class="prettyprint code"><code>List&lt;Item&gt; items = ...;
+  <pre class="prettyprint code"><code class="language-java">List&lt;Item&gt; items = ...;
 String names = items.stream().map((x) -&gt; x.getTitle()).collect(Collectors.joining(&quot;, &quot;));</code></pre>
 </div>
 
@@ -215,7 +215,7 @@ String names = items.stream().map((x) -&gt; x.getTitle()).collect(Collectors.joi
 
 <div class="col-md-6 content">
   <p class="caption badge">Get distinct countries from cities</p>
-  <pre class="prettyprint code"><code>List&lt;City&gt; cities = ...;
+  <pre class="prettyprint code"><code class="language-java">List&lt;City&gt; cities = ...;
 List&lt;Country&gt; countries = cities.stream().map((c) -&gt; c.getCountry()).distinct().collect(Collectors.toList());</code></pre>
 </div>
 
@@ -224,7 +224,7 @@ List&lt;Country&gt; countries = cities.stream().map((c) -&gt; c.getCountry()).di
 
 <div class="col-md-6 content">
   <p class="caption badge">Get count, min, max, sum, and average statistics for items rating</p>
-  <pre class="prettyprint code"><code>List&lt;Item&gt; items = ...;
+  <pre class="prettyprint code"><code class="language-java">List&lt;Item&gt; items = ...;
 IntSummaryStatistics stats = items.stream().mapToInt((x) -&gt; x.getRating()).summaryStatistics();</code></pre>
 </div>
 
@@ -234,6 +234,9 @@ IntSummaryStatistics stats = items.stream().mapToInt((x) -&gt; x.getRating()).su
 
 
 </div>
+		</div>
+		
+		<div id="right" class="col-md-3">
 		</div>
 		
 	</div>

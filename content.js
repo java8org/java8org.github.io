@@ -12,9 +12,32 @@ function loadScript(url, callback) {
 	head.appendChild(script);
 }
 
+var charmap = {
+	"&" : "&amp;",
+	"<" : "&lt;",
+	">" : "&gt;",
+	'"' : '&quot;',
+	"'" : '&#39;',
+	"*" : '&#42;',
+	"/" : '&#x2F;'
+};
+
+function escapeHtml(string) {
+	return String(string).replace(/[&<>"'\/]/g, function(s) {
+		return charmap[s];
+	});
+}
+
 function jqloaded() {
 	// will contain list of articles
-	$('#right').html('');
+	var ohmDbCode = 'OhmDB db = Ohm.db("my.db");\nTable<Item> items;\nitems = db.table(Item.class);\nItem foo = new Item("foo");\nlong id = items.insert(foo);';
+
+	var ohmExample = '<pre class="prettyprint right-snippet"><code>' + escapeHtml(ohmDbCode) + '</pre></code>';
+
+	$('#right').html(
+			'<h3>Sponsors:</h3><a href="http://www.ohmdb.com"><img src="ohmdb-logo.png"/><br/>' + ohmExample + '<p>OhmDB - The Irresistible Database for Java</p></a>');
+	
+	prettyPrint();
 }
 
 function prettyloaded() {

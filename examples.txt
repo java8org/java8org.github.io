@@ -2,7 +2,7 @@
 
 <div class="col-md-6 content">
   <p class="caption badge">{{escapeHtml(x[0])}}</p>
-  <pre class="prettyprint code"><code>{{escapeHtml(x[1])}}</code></pre>
+  <pre class="prettyprint code"><code class="language-java">{{escapeHtml(x[1])}}</code></pre>
 </div>
 
 {{ Math.round(i/2)*2==i ? '' : '\n</div><div class="row">\n' }}
