@@ -1,0 +1,195 @@
+Java 8 Cheatsheet    
+
+[sub]Lambda expression - easy way to implement single-method (aka functional) interface[/sub]  
+
+[columns:6:6]
+
+[caption]Lambda syntax[/caption]
+
+[code]
+(parameters) -> expression
+(parameters) -> statement
+(parameters) -> { statements }
+[/code]
+
+[column-separator]
+
+[caption]Lambda expression examples[/caption]
+
+[code]
+(int x, int y) -> x + y
+() -> System.out.println("hi " + s);
+(String s) -> { int n = s.length(); return n; }
+[/code]
+
+[/columns]
+
+[columns:6:6]
+
+[caption]Run a Runnable[/caption]
+
+[code]
+Runnable r = () -> System.out.println("Hello!");
+r.run();
+[/code]
+
+[column-separator]
+
+[caption]The PI function[/caption]
+
+[code]
+Callable<Double> pi = () -> 3.14;
+Double p = pi.call();
+[/code]
+
+[/columns]
+
+[columns:6:6]
+
+[caption]Sort strings by length[/caption]
+
+[code]
+String[] words = {"aaa", "b", "cc"};
+Arrays.sort(words, (s1, s2) -> s1.length() - s2.length());
+
+// equivalent to:
+Arrays.sort(words, (String s1, String s2) -> s1.length() - s2.length());
+[/code]
+
+[column-separator]
+
+[caption]Effectively final variables can be referenced in lambdas[/caption]
+
+[code]
+// s is effectively final (not changed anywhere)
+String s = "foo";
+
+// s can be referenced in the lambda
+Runnable r = () -> System.out.println(s);
+[/code]
+
+[/columns]
+
+[sub]Method reference - easy way to use existing method in a functional way[/sub]  
+
+[columns:6:6]
+
+[caption]Static method reference[/caption]
+
+[code]
+// Class::staticMethod syntax
+Arrays.sort(items, Util::compareItems);
+
+// equivalent to:
+Arrays.sort(items, (a, b) -> Util.compareItems(a, b));
+[/code]
+
+[column-separator]
+
+[caption]Instance method reference[/caption]
+
+[code]
+// instance::instanceMethod syntax
+items.forEach(System.out::print);
+
+// equivalent to:
+items.forEach((x) -> System.out.print(x));
+[/code]
+
+[/columns]
+
+[columns:6:6]
+
+[caption]Reference to a method of arbitrary instance[/caption]
+
+[code]
+// Class::instanceMethod syntax
+items.forEach(Item::publish);
+
+// equivalent to:
+items.forEach((x) -> { x.publish(); });
+[/code]
+
+[column-separator]
+
+[caption]Constructor reference[/caption]
+
+[code]
+ConstructorReference cref = Item::new;
+Item item = cref.constructor();
+[/code]
+
+[/columns]
+
+[sub]Default method - interface method with default implementation[/sub]  
+
+[columns:6:6]
+
+[caption]Defining default methods in interfaces[/caption]
+
+[code]
+interface Descriptive {
+
+  default String desc() {
+    return "fantastic";
+  }
+
+}
+[/code]
+
+[column-separator]
+
+[caption]Implementing interface with default method[/caption]
+
+[code]
+class Item implements Descriptive { }
+
+Item x = new Item();
+
+// prints "fantastic"
+System.out.println(x.desc());
+[/code]
+
+[/columns]
+
+[sub]Stream - sequence of values[/sub]  
+
+[columns:6:6]
+
+[caption]Count the non-empty strings[/caption]
+
+[code]
+List<String> strings = ...;
+long n = strings.stream().filter(x -> !x.isEmpty()).count();
+[/code]
+
+[column-separator]
+
+[caption]Join item titles[/caption]
+
+[code]
+List<Item> items = ...;
+String names = items.stream().map((x) -> x.getTitle()).collect(Collectors.joining(", "));
+[/code]
+
+[/columns]
+
+[columns:6:6]
+
+[caption]Get distinct countries from cities[/caption]
+
+[code]
+List<City> cities = ...;
+List<Country> countries = cities.stream().map((c) -> c.getCountry()).distinct().collect(Collectors.toList());
+[/code]
+
+[column-separator]
+
+[caption]Get count, min, max, sum, and average statistics for items rating[/caption]
+
+[code]
+List<Item> items = ...;
+IntSummaryStatistics stats = items.stream().mapToInt((x) -> x.getRating()).summaryStatistics();
+[/code]
+
+[/columns]

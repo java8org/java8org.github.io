@@ -1,0 +1,156 @@
+Caching with ConcurrentHashMap and computeIfAbsent    
+
+[remark]
+This article is based on the [Java 8 Friday Goodies: Easy-as-Pie Local Caching::http://blog.jooq.org/2014/02/28/java-8-friday-goodies-easy-as-pie-local-caching] article by Lukas Eder.
+[/remark]
+
+Everybody knows about Fibonacci numbers `(0, 1, 1, 2, 3, 5, 8, 13, 21...)`. They are a nice example of recurrent calculation of sequence of numbers: `f(n) = f(n-2) + f(n-1)`. Let's write a simple code that calculates the n-th (0-based) Fibonacci number:  
+
+[columns:8:4]
+
+[code]
+public class Fibonacci {
+
+	public int fib(int n) {
+		if (n == 0 || n == 1) return n;
+		
+		System.out.println("calculating fib(" + n + ")");
+		return fib(n - 2) + fib(n - 1);
+	}
+
+}
+[/code]
+
+Let's print the 7th Fibonacci number: 
+
+[code]
+public class Main {
+
+	public static void main(String[] args) {
+		System.out.println("fib(7) = " + new Fibonacci().fib(7));
+	}
+
+}
+[/code]
+
+[column-separator]
+
+[output]
+calculating fib(7)
+calculating fib(5)
+calculating fib(3)
+calculating fib(2)
+calculating fib(4)
+calculating fib(2)
+calculating fib(3)
+calculating fib(2)
+calculating fib(6)
+calculating fib(4)
+calculating fib(2)
+calculating fib(3)
+calculating fib(2)
+calculating fib(5)
+calculating fib(3)
+calculating fib(2)
+calculating fib(4)
+calculating fib(2)
+calculating fib(3)
+calculating fib(2)
+fib(7) = 13
+[/output]
+
+[/columns]
+
+Wait, that's too much computation! There is a *performance problem* in the code above. The number of `fib(n)` calls grows exponentially as `n` increases. We could use some *caching*, which should be *thread-safe*.
+
+[columns:8:4]
+
+[code]
+public class Fibonacci {
+
+	private Map<Integer, Integer> cache = new ConcurrentHashMap<>();
+
+	public int fib(int n) {
+		if (n == 0 || n == 1) return n;
+
+		Integer result = cache.get(n);
+
+		if (result == null) {
+			synchronized (cache) {
+				result = cache.get(n);
+
+				if (result == null) {
+					System.out.println("calculating fib(" + n + ")");
+					result = fib(n - 2) + fib(n - 1);
+					cache.put(n, result);
+				}
+			}
+		}
+
+		return result;
+	}
+
+}
+[/code]
+
+[column-separator]
+
+[output]
+calculating fib(7)
+calculating fib(5)
+calculating fib(3)
+calculating fib(2)
+calculating fib(4)
+calculating fib(6)
+fib(7) = 13
+[/output]
+
+[/columns]
+
+Basically, the code checks for cached result. If there is none, it calculates the result and puts it in the map. For better performance, a *double-checked locking* is used. But the code is getting complex... 
+
+[sub]Java 8 to the rescue![/sub]
+
+Let's take a look at this *new method in Java 8's ConcurrentHashMap*:
+
+[code]
+public V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)
+[/code]
+
+*What does ConcurrentHashMap.computeIfAbsent do?* If no entry in the map is found for the specified key, it will compute the value atomically by calling `mappingFunction(key)` and it will put the `key = value` entry in the map. Basically, it does all the dirty job we had to write ourselves before Java 8. So, now the code is much simpler (also because of the Java 8 lambda expression):
+
+[code]
+public class Fibonacci {
+
+	private Map<Integer, Integer> cache = new ConcurrentHashMap<>();
+
+	public int fib(int n) {
+		if (n == 0 || n == 1) return n;
+
+		return cache.computeIfAbsent(n, (key) -> {
+			System.out.println("calculating fib(" + n + ")");
+        	return fib(n - 2) + fib(n - 1);
+    	});
+	}
+
+}
+[/code]
+
+Of course, without printing info, the lambda expression gets even simpler: 
+ 
+[code]
+public class Fibonacci {
+
+	private Map<Integer, Integer> cache = new ConcurrentHashMap<>();
+
+	public int fib(int n) {
+		if (n == 0 || n == 1) return n;
+
+		return cache.computeIfAbsent(n, (key) -> fib(n - 2) + fib(n - 1));
+	}
+
+}
+[/code]
+ 
+ This article shows how using only one new method from Java 8's ConcurrentHashMap simplified the code. But there's much more great new stuff in Java 8...
+ 

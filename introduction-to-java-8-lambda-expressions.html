@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="google-site-verification" content="WWBdxC8X7MBQlX9izFeckAdjuPnEF-2KIh9A60m89SQ" />
+<meta name="majestic-site-verification" content="MJ12_7d8b31b7-5931-4558-a754-543d98f53b50">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="default.css" type="text/css" rel="stylesheet" />
+
+<title>Java 8 Resources - Introduction to Java 8 Lambda expressions</title>
+<meta name="description" content="Java 8 Resources (lambdas, method references, defender methods, streams) - Introduction to Java 8 Lambda expressions" />
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default" role="navigation">
+
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Java 8 Resources</a>
+		</div>
+
+		<div class="navbar-header">
+			&nbsp;
+			<a href="https://twitter.com/share" rel="nofollow" class="twitter-share-button navbar-btn" data-url="http://www.java8.org"
+				data-text="#Java 8 #articles and code #snippets #lambda" data-size="small"
+			>Tweet</a>
+			<span class="g-plusone" data-size="medium"></span>
+			<script type="IN/Share" data-url="http://www.java8.org" data-counter="right"></script>
+		</div>
+		
+		<div class="navbar-header navbar-form" id="unofficial">This is NOT the Official Website of Java.</div>
+	</nav>
+
+	<div class="row">
+		<div class="col-md-9">
+			<div class="content">
+				<h3 class="title text-center">
+					<span class="postName">Introduction to Java 8 Lambda expressions</span>
+					<span class="author">by Nikolche Mihajlovski, 
+						<a href="http://www.ohmdb.com" rel="nofollow"><img src="ohmdb-logo.png"/></a>
+						<a style="visibility: hidden;" rel="nofollow" href="https://plus.google.com/u/0/101896671685821826925?rel=author">Google</a>
+					</span>
+				</h3>
+
+				
+Let's run some <code class="prettyprint">Runnable</code>! With <b>Java 8</b>, instead of using anonymous classes, we can use <b>lambdas</b>. The syntax <code class="prettyprint">(params) -&gt; statement</code> is used to create an instance of <code class="prettyprint">Runnable</code> by implementing its <code class="prettyprint">run</code> method. This is <b>possible only for interfaces that have only one method that must be implemented</b>, and such interfaces are called <b>functional interfaces</b>.  
+
+<div class="row row-separated"><div class="col-md-6">
+
+<div class="caption bad">Without Lambda:</div>
+
+<pre class="prettyprint code"><code>Runnable r = new Runnable() {
+   @Override
+   public void run() {
+      System.out.println(&quot;Hello!&quot;);
+   }
+};
+
+r.run();
+</code></pre>
+
+</div><div class="col-md-6">
+
+<div class="caption good">With Lambda:</div>
+
+<pre class="prettyprint code"><code>Runnable r = () -&gt; System.out.println(&quot;Hello!&quot;);
+
+r.run();
+</code></pre>
+
+</div></div>
+
+Lambdas can be also used in the syntax form <code class="prettyprint">(params) -&gt; expression</code> to implement a <b>functional interface</b>, e.g. <code class="prettyprint">Comparator&lt;Person&gt;</code>:
+
+<div class="row row-separated"><div class="col-md-6">
+
+<div class="caption bad">Without Lambda:</div>
+
+<pre class="prettyprint code"><code>public class Person {
+   public String name;
+   public int age;
+}
+
+List&lt;Person&gt; persons = ...
+
+Collections.sort(persons, new Comparator&lt;Person&lt;() {
+   public int compare(Person p1, Person p2){
+      return p1.name.compareTo(p2.name);
+   }
+});
+</code></pre>
+
+</div><div class="col-md-6">
+
+<div class="caption good">With Lambda:</div>
+
+<pre class="prettyprint code"><code>public class Person {
+   public String name;
+   public int age;
+}
+
+List&lt;Person&gt; persons = ...
+
+Collections.sort(persons, (p1, p2) -&gt; p1.name.compareTo(p2.name));
+</code></pre>
+
+</div></div>
+
+The <b>types of parameters</b> <code class="prettyprint">p1</code> and <code class="prettyprint">p2</code> can be <b>inferred</b> since the implemented method is <code class="prettyprint">int compare (Person o1, Person o2)</code>, meaning the type of parameters <code class="prettyprint">p1</code> and <code class="prettyprint">p2</code> is <code class="prettyprint">Person</code>.
+
+Lambda expressions are great, and there's even more great stuff in Java 8...
+ 
+
+			</div>
+		</div>
+
+		<div id="right" class="col-md-3">
+			<h3>Sponsors:</h3>
+			<div id="sponsors"></div>
+			<h3>All articles:</h3>
+			<div id="articles">
+			<p><a href="caching-with-ConcurrentHashMap-in-java-8.html">Caching with ConcurrentHashMap and computeIfAbsent    </a></p><p><a href="/">Java 8 Cheatsheet    </a></p><p><a href="introduction-to-java-8-lambda-expressions.html">Introduction to Java 8 Lambda expressions    </a></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div id="footer" class="text-center">
+				<p>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of
+					their respective owners.</p>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="content.js"></script>
+</body>
+</html>

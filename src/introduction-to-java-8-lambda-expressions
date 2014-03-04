@@ -1,0 +1,73 @@
+Introduction to Java 8 Lambda expressions    
+
+Let's run some `Runnable`! With *Java 8*, instead of using anonymous classes, we can use *lambdas*. The syntax `(params) -> statement` is used to create an instance of `Runnable` by implementing its `run` method. This is *possible only for interfaces that have only one method that must be implemented*, and such interfaces are called *functional interfaces*.  
+
+[columns:6:6]
+
+[bad]Without Lambda:[/bad]
+
+[code]
+Runnable r = new Runnable() {
+   @Override
+   public void run() {
+      System.out.println("Hello!");
+   }
+};
+
+r.run();
+[/code]
+
+[column-separator]
+
+[good]With Lambda:[/good]
+
+[code]
+Runnable r = () -> System.out.println("Hello!");
+
+r.run();
+[/code]
+
+[/columns]
+
+Lambdas can be also used in the syntax form `(params) -> expression` to implement a *functional interface*, e.g. `Comparator<Person>`:
+
+[columns:6:6]
+
+[bad]Without Lambda:[/bad]
+
+[code]
+public class Person {
+   public String name;
+   public int age;
+}
+
+List<Person> persons = ...
+
+Collections.sort(persons, new Comparator<Person<() {
+   public int compare(Person p1, Person p2){
+      return p1.name.compareTo(p2.name);
+   }
+});
+[/code]
+
+[column-separator]
+
+[good]With Lambda:[/good]
+
+[code]
+public class Person {
+   public String name;
+   public int age;
+}
+
+List<Person> persons = ...
+
+Collections.sort(persons, (p1, p2) -> p1.name.compareTo(p2.name));
+[/code]
+
+[/columns]
+
+The *types of parameters* `p1` and `p2` can be *inferred* since the implemented method is `int compare (Person o1, Person o2)`, meaning the type of parameters `p1` and `p2` is `Person`.
+
+Lambda expressions are great, and there's even more great stuff in Java 8...
+ 

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="google-site-verification" content="WWBdxC8X7MBQlX9izFeckAdjuPnEF-2KIh9A60m89SQ" />
+<meta name="majestic-site-verification" content="MJ12_7d8b31b7-5931-4558-a754-543d98f53b50">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="default.css" type="text/css" rel="stylesheet" />
+
+<title>Java 8 Resources - Caching with ConcurrentHashMap and computeIfAbsent</title>
+<meta name="description" content="Java 8 Resources (lambdas, method references, defender methods, streams) - Caching with ConcurrentHashMap and computeIfAbsent" />
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default" role="navigation">
+
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Java 8 Resources</a>
+		</div>
+
+		<div class="navbar-header">
+			&nbsp;
+			<a href="https://twitter.com/share" rel="nofollow" class="twitter-share-button navbar-btn" data-url="http://www.java8.org"
+				data-text="#Java 8 #articles and code #snippets #lambda" data-size="small"
+			>Tweet</a>
+			<span class="g-plusone" data-size="medium"></span>
+			<script type="IN/Share" data-url="http://www.java8.org" data-counter="right"></script>
+		</div>
+		
+		<div class="navbar-header navbar-form" id="unofficial">This is NOT the Official Website of Java.</div>
+	</nav>
+
+	<div class="row">
+		<div class="col-md-9">
+			<div class="content">
+				<h3 class="title text-center">
+					<span class="postName">Caching with ConcurrentHashMap and computeIfAbsent</span>
+					<span class="author">by Nikolche Mihajlovski, 
+						<a href="http://www.ohmdb.com" rel="nofollow"><img src="ohmdb-logo.png"/></a>
+						<a style="visibility: hidden;" rel="nofollow" href="https://plus.google.com/u/0/101896671685821826925?rel=author">Google</a>
+					</span>
+				</h3>
+
+				
+<div class="remark">
+This article is based on the <a href="http:&#x2F;&#x2F;blog.jooq.org&#x2F;2014&#x2F;02&#x2F;28&#x2F;java-8-friday-goodies-easy-as-pie-local-caching" rel="nofollow">Java 8 Friday Goodies: Easy-as-Pie Local Caching</a> article by Lukas Eder.
+</div>
+
+Everybody knows about Fibonacci numbers <code class="prettyprint">(0, 1, 1, 2, 3, 5, 8, 13, 21...)</code>. They are a nice example of recurrent calculation of sequence of numbers: <code class="prettyprint">f(n) = f(n-2) + f(n-1)</code>. Let's write a simple code that calculates the n-th (0-based) Fibonacci number:  
+
+<div class="row row-separated"><div class="col-md-8">
+
+<pre class="prettyprint code"><code>public class Fibonacci {
+
+    public int fib(int n) {
+        if (n == 0 || n == 1) return n;
+        
+        System.out.println(&quot;calculating fib(&quot; + n + &quot;)&quot;);
+        return fib(n - 2) + fib(n - 1);
+    }
+
+}
+</code></pre>
+
+Let's print the 7th Fibonacci number: 
+
+<pre class="prettyprint code"><code>public class Main {
+
+    public static void main(String[] args) {
+        System.out.println(&quot;fib(7) = &quot; + new Fibonacci().fib(7));
+    }
+
+}
+</code></pre>
+
+</div><div class="col-md-4">
+
+<pre class="code"><code>calculating fib(7)
+calculating fib(5)
+calculating fib(3)
+calculating fib(2)
+calculating fib(4)
+calculating fib(2)
+calculating fib(3)
+calculating fib(2)
+calculating fib(6)
+calculating fib(4)
+calculating fib(2)
+calculating fib(3)
+calculating fib(2)
+calculating fib(5)
+calculating fib(3)
+calculating fib(2)
+calculating fib(4)
+calculating fib(2)
+calculating fib(3)
+calculating fib(2)
+fib(7) = 13
+</code></pre>
+
+</div></div>
+
+Wait, that's too much computation! There is a <b>performance problem</b> in the code above. The number of <code class="prettyprint">fib(n)</code> calls grows exponentially as <code class="prettyprint">n</code> increases. We could use some <b>caching</b>, which should be <b>thread-safe</b>.
+
+<div class="row row-separated"><div class="col-md-8">
+
+<pre class="prettyprint code"><code>public class Fibonacci {
+
+    private Map&lt;Integer, Integer&gt; cache = new ConcurrentHashMap&lt;&gt;();
+
+    public int fib(int n) {
+        if (n == 0 || n == 1) return n;
+
+        Integer result = cache.get(n);
+
+        if (result == null) {
+            synchronized (cache) {
+                result = cache.get(n);
+
+                if (result == null) {
+                    System.out.println(&quot;calculating fib(&quot; + n + &quot;)&quot;);
+                    result = fib(n - 2) + fib(n - 1);
+                    cache.put(n, result);
+                }
+            }
+        }
+
+        return result;
+    }
+
+}
+</code></pre>
+
+</div><div class="col-md-4">
+
+<pre class="code"><code>calculating fib(7)
+calculating fib(5)
+calculating fib(3)
+calculating fib(2)
+calculating fib(4)
+calculating fib(6)
+fib(7) = 13
+</code></pre>
+
+</div></div>
+
+Basically, the code checks for cached result. If there is none, it calculates the result and puts it in the map. For better performance, a <b>double-checked locking</b> is used. But the code is getting complex... 
+
+<div class="sub text-center">Java 8 to the rescue!</div>
+
+Let's take a look at this <b>new method in Java 8&#39;s ConcurrentHashMap</b>:
+
+<pre class="prettyprint code"><code>public V computeIfAbsent(K key, Function&lt;? super K,? extends V&gt; mappingFunction)
+</code></pre>
+
+<b>What does ConcurrentHashMap.computeIfAbsent do?</b> If no entry in the map is found for the specified key, it will compute the value atomically by calling <code class="prettyprint">mappingFunction(key)</code> and it will put the <code class="prettyprint">key = value</code> entry in the map. Basically, it does all the dirty job we had to write ourselves before Java 8. So, now the code is much simpler (also because of the Java 8 lambda expression):
+
+<pre class="prettyprint code"><code>public class Fibonacci {
+
+    private Map&lt;Integer, Integer&gt; cache = new ConcurrentHashMap&lt;&gt;();
+
+    public int fib(int n) {
+        if (n == 0 || n == 1) return n;
+
+        return cache.computeIfAbsent(n, (key) -&gt; {
+            System.out.println(&quot;calculating fib(&quot; + n + &quot;)&quot;);
+            return fib(n - 2) + fib(n - 1);
+        });
+    }
+
+}
+</code></pre>
+
+Of course, without printing info, the lambda expression gets even simpler: 
+ 
+<pre class="prettyprint code"><code>public class Fibonacci {
+
+    private Map&lt;Integer, Integer&gt; cache = new ConcurrentHashMap&lt;&gt;();
+
+    public int fib(int n) {
+        if (n == 0 || n == 1) return n;
+
+        return cache.computeIfAbsent(n, (key) -&gt; fib(n - 2) + fib(n - 1));
+    }
+
+}
+</code></pre>
+ 
+ This article shows how using only one new method from Java 8's ConcurrentHashMap simplified the code. But there's much more great new stuff in Java 8...
+ 
+
+			</div>
+		</div>
+
+		<div id="right" class="col-md-3">
+			<h3>Sponsors:</h3>
+			<div id="sponsors"></div>
+			<h3>All articles:</h3>
+			<div id="articles">
+			<p><a href="caching-with-ConcurrentHashMap-in-java-8.html">Caching with ConcurrentHashMap and computeIfAbsent    </a></p><p><a href="/">Java 8 Cheatsheet    </a></p><p><a href="introduction-to-java-8-lambda-expressions.html">Introduction to Java 8 Lambda expressions    </a></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div id="footer" class="text-center">
+				<p>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of
+					their respective owners.</p>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="content.js"></script>
+</body>
+</html>

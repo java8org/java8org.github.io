@@ -28,15 +28,23 @@ function escapeHtml(string) {
 	});
 }
 
+var articlesList = {
+	'Java 8 Cheatsheet' : '/',
+	'Caching with ConcurrentHashMap and computeIfAbsent' : 'caching-with-ConcurrentHashMap-in-java-8.html',
+	'Introduction to Java 8 Lambda expressions' : 'introduction-to-java-8-lambda-expressions.html'
+};
+
 function jqloaded() {
 	// will contain list of articles
 	var ohmDbCode = 'OhmDB db = Ohm.db("my.db");\nTable<Item> items;\nitems = db.table(Item.class);\nItem foo = new Item("foo");\nlong id = items.insert(foo);';
 
 	var ohmExample = '<pre class="prettyprint right-snippet"><code>' + escapeHtml(ohmDbCode) + '</pre></code>';
 
-	$('#right').html(
-			'<h3>Sponsors:</h3><a href="http://www.ohmdb.com"><img src="ohmdb-logo.png"/><br/>' + ohmExample + '<p>OhmDB - The Irresistible Database for Java</p></a>');
-	
+	var sponsors = '<a href="http://www.ohmdb.com"><img src="ohmdb-logo.png"/><br/>' + ohmExample
+			+ '<p>OhmDB - The Irresistible Database for Java</p></a>';
+
+	$('#sponsors').html(sponsors);
+
 	prettyPrint();
 }
 
