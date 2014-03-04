@@ -93,20 +93,22 @@ function content(src) {
 	return src;
 }
 
-function block(src, v) {
+function block(src, v, url) {
 	if (v == 'content')
 		return content(src.replace(/^.+?\n/, ''));
 	if (v == 'title')
 		return src.split(/\n/)[0].trim();
 	if (v == 'articles')
 		return articles();
+	if (v == 'url')
+		return url;
 	return 'UNDEFINED!';
 }
 
-function transform(template, src) {
+function transform(template, src, url) {
 	return template.replace(/\{\{((?!\}\}).+?)\}\}/g, function(m, v) {
 		try {
-			return block(src, v);
+			return block(src, v, url);
 		} catch (e) {
 			return '{{' + e + '}}';
 		}
@@ -126,7 +128,9 @@ fs.readFile('template.html', 'utf8', function(err, templ) {
 					return console.log(err);
 				}
 
-				var html = transform(templ, data);
+				var url = outname != 'index.html' ? '/' + outname : '/';
+
+				var html = transform(templ, data, url);
 				fs.writeFile(outname, html, function(err) {
 					if (err) {
 						console.log(err);
