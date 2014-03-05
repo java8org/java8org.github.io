@@ -84,6 +84,7 @@ class LambdaExample {
     	Runnable r = () -> { 
     		System.out.println("hello");
     	}
+    	r.run();
     }
     
 }
@@ -97,7 +98,8 @@ class LambdaExample {
 class LambdaExample {
 
     public void abc() {
-    	Runnable r = <lambda$1 as Runnable instance>; 
+    	Runnable r = <lambda$1 as Runnable instance>;
+    	r.run(); 
     }
 
     static void lambda$1() {

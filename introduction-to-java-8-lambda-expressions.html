@@ -122,6 +122,7 @@ It might look like the lambda expressions are just the syntax sugar for anonymou
         Runnable r = () -&gt; { 
             System.out.println(&quot;hello&quot;);
         }
+        r.run();
     }
     
 }
@@ -134,7 +135,8 @@ It might look like the lambda expressions are just the syntax sugar for anonymou
 <pre class="prettyprint code"><code>class LambdaExample {
 
     public void abc() {
-        Runnable r = &lt;lambda$1 as Runnable instance&gt;; 
+        Runnable r = &lt;lambda$1 as Runnable instance&gt;;
+        r.run(); 
     }
 
     static void lambda$1() {
