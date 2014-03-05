@@ -48,7 +48,10 @@ span.author {
 }
 
 #unofficial {
-	font-weight: bold;
+	font-size: 14px !important;
+	font-weight: bold !important;
+	margin-top: -8px !important;
+	color: black !important;
 }
 
 #footer {
@@ -124,3 +127,11 @@ div.header {
 	margin-bottom: 15px !important;
 }
 
+#twitter-widget-0,.g-plusone {
+	margin: 0px !important;
+}
+
+#header-widgets {
+	margin-top: 30px !important;
+	padding-top: 30px !important;
+}
