@@ -1,6 +1,6 @@
 Introduction to Java 8 Lambda expressions    
 
-Let's run some `Runnable`! With *Java 8*, instead of using anonymous classes, we can use *lambdas*. The syntax `(params) -> statement` is used to create an instance of `Runnable` by implementing its `run` method. This is *possible only for interfaces that have only one method that must be implemented*, and such interfaces are called *functional interfaces*.  
+Let's run some `Runnable`! With *Java 8*, instead of using anonymous classes, we can use *lambdas*. The syntax `(params) -> statement` is used to create an instance of `Runnable` by implementing its `run` method. This is *possible only for interfaces that have only one abstract method*, and such interfaces are called *functional interfaces*. Wait, aren't all interface methods abstract? [Not anymore::/]. 
 
 [columns:6:6]
 
@@ -69,5 +69,47 @@ Collections.sort(persons, (p1, p2) -> p1.name.compareTo(p2.name));
 
 The *types of parameters* `p1` and `p2` can be *inferred* since the implemented method is `int compare (Person o1, Person o2)`, meaning the type of parameters `p1` and `p2` is `Person`.
 
-Lambda expressions are great, and there's even more great stuff in Java 8...
+[sub]How lambda expressions work under the hood?[/sub]
+
+It might look like the lambda expressions are just the syntax sugar for anonymous inner classes, but there is much more elegant approach. The simplest explanation is: *the lambda expression is represented by a new method, and it is invoked at run-time using invokedynamic*.
+
+[columns:6:6]
+
+[caption]Source code:[/caption]
+
+[code]
+class LambdaExample {
+
+    public void abc() {
+    	Runnable r = () -> { 
+    		System.out.println("hello");
+    	}
+    }
+    
+}
+[/code]
+
+[column-separator]
+
+[caption]Bytecode equivalent:[/caption]
+
+[code]
+class LambdaExample {
+
+    public void abc() {
+    	Runnable r = <lambda$1 as Runnable instance>; 
+    }
+
+    static void lambda$1() {
+        System.out.println("hello");
+    }
+    
+}
+[/code]
+
+[/columns]
+
+Inside the JVM, there is a *lambda factory* that creates an instance of the functional interface (e.g. `Runnable`) from the generated lambda method (e.g. `lambda$1`).
+[br][br]
+Lambda expressions are great, and there's even [more great stuff in Java 8::/]...
  

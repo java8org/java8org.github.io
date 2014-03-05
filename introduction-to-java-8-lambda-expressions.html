@@ -46,7 +46,7 @@
 				</h3>
 				
 				
-Let's run some <code class="prettyprint">Runnable</code>! With <b>Java 8</b>, instead of using anonymous classes, we can use <b>lambdas</b>. The syntax <code class="prettyprint">(params) -&gt; statement</code> is used to create an instance of <code class="prettyprint">Runnable</code> by implementing its <code class="prettyprint">run</code> method. This is <b>possible only for interfaces that have only one method that must be implemented</b>, and such interfaces are called <b>functional interfaces</b>.  
+Let's run some <code class="prettyprint">Runnable</code>! With <b>Java 8</b>, instead of using anonymous classes, we can use <b>lambdas</b>. The syntax <code class="prettyprint">(params) -&gt; statement</code> is used to create an instance of <code class="prettyprint">Runnable</code> by implementing its <code class="prettyprint">run</code> method. This is <b>possible only for interfaces that have only one abstract method</b>, and such interfaces are called <b>functional interfaces</b>. Wait, aren't all interface methods abstract? <a href="/" rel="nofollow">Not anymore</a>. 
 
 <div class="row row-separated"><div class="col-md-6">
 
@@ -111,7 +111,47 @@ Collections.sort(persons, (p1, p2) -&gt; p1.name.compareTo(p2.name));
 
 The <b>types of parameters</b> <code class="prettyprint">p1</code> and <code class="prettyprint">p2</code> can be <b>inferred</b> since the implemented method is <code class="prettyprint">int compare (Person o1, Person o2)</code>, meaning the type of parameters <code class="prettyprint">p1</code> and <code class="prettyprint">p2</code> is <code class="prettyprint">Person</code>.
 
-Lambda expressions are great, and there's even more great stuff in Java 8...
+<div class="sub text-center">How lambda expressions work under the hood?</div>
+
+It might look like the lambda expressions are just the syntax sugar for anonymous inner classes, but there is much more elegant approach. The simplest explanation is: <b>the lambda expression is represented by a new method, and it is invoked at run-time using invokedynamic</b>.
+
+<div class="row row-separated"><div class="col-md-6">
+
+<div class="caption">Source code:</div>
+
+<pre class="prettyprint code"><code>class LambdaExample {
+
+    public void abc() {
+        Runnable r = () -&gt; { 
+            System.out.println(&quot;hello&quot;);
+        }
+    }
+    
+}
+</code></pre>
+
+</div><div class="col-md-6">
+
+<div class="caption">Bytecode equivalent:</div>
+
+<pre class="prettyprint code"><code>class LambdaExample {
+
+    public void abc() {
+        Runnable r = &lt;lambda$1 as Runnable instance&gt;; 
+    }
+
+    static void lambda$1() {
+        System.out.println(&quot;hello&quot;);
+    }
+    
+}
+</code></pre>
+
+</div></div>
+
+Inside the JVM, there is a <b>lambda factory</b> that creates an instance of the functional interface (e.g. <code class="prettyprint">Runnable</code>) from the generated lambda method (e.g. <code class="prettyprint">lambda$1</code>).
+<br/><br/>
+Lambda expressions are great, and there's even <a href="/" rel="nofollow">more great stuff in Java 8</a>...
  
 				
 			</div>
