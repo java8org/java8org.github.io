@@ -1,7 +1,7 @@
 Caching with ConcurrentHashMap and computeIfAbsent    
 
 [remark]
-This article is based on the [Java 8 Friday Goodies: Easy-as-Pie Local Caching::http://blog.jooq.org/2014/02/28/java-8-friday-goodies-easy-as-pie-local-caching] article by Lukas Eder.
+This article is based on the [Java 8 Friday Goodies: Easy-as-Pie Local Caching::http://blog.jooq.org/2014/02/28/java-8-friday-goodies-easy-as-pie-local-caching] article by [Data Geekery GmbH::http://www.datageekery.com] (the company behind [jooq.org::http://www.jooq.org]), and published with their permission.
 [/remark]
 
 Everybody knows about Fibonacci numbers `(0, 1, 1, 2, 3, 5, 8, 13, 21...)`. They are a nice example of recurrent calculation of sequence of numbers: `f(n) = f(n-2) + f(n-1)`. Let's write a simple code that calculates the n-th (0-based) Fibonacci number:  
