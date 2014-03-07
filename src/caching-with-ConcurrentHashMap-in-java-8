@@ -1,4 +1,4 @@
-Caching with ConcurrentHashMap and computeIfAbsent    
+Caching with ConcurrentHashMap and computeIfAbsent::www.jooq.org    
 
 [remark]
 This article is based on the [Java 8 Friday Goodies: Easy-as-Pie Local Caching::http://blog.jooq.org/2014/02/28/java-8-friday-goodies-easy-as-pie-local-caching] article by [Data Geekery GmbH::http://www.datageekery.com] (the company behind [jooq.org::http://www.jooq.org]), and published with their permission.

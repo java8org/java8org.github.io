@@ -29,7 +29,7 @@ function articles() {
 			}
 
 			var data = fs.readFileSync('src/' + name, 'utf8');
-			var caption = data.split(/\n/)[0];
+			var caption = data.split(/\n/)[0].trim().split('::')[0];
 			all += '<p><a href="' + url + '">' + caption + '</a></p>';
 		}
 	});
@@ -97,7 +97,9 @@ function block(src, v, url) {
 	if (v == 'content')
 		return content(src.replace(/^.+?\n/, ''));
 	if (v == 'title')
-		return src.split(/\n/)[0].trim();
+		return src.split(/\n/)[0].trim().split('::')[0];
+	if (v == 'sponsor')
+		return src.split(/\n/)[0].trim().split('::')[1] || 'empty';
 	if (v == 'articles')
 		return articles();
 	if (v == 'url')
