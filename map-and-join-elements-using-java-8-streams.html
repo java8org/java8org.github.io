@@ -22,7 +22,7 @@
     <link href="rapidoid.min.css" type="text/css" rel="stylesheet"/>
     <link href="theme-default.css" type="text/css" rel="stylesheet"/>
 
-    <title>Java 8 Resources - Introduction to Java 8 Lambda expressions</title>
+    <title>Java 8 Resources - Map and join elements using Java 8 Streams</title>
 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
@@ -64,7 +64,7 @@
 
     <div class="row">
         <div class="col-md-10">
-            <h2>Introduction to Java 8 Lambda expressions</h2>
+            <h2>Map and join elements using Java 8 Streams</h2>
         </div>
         <div class="col-md-2">
             <div class="unofficial">This is <b>NOT</b> the official website <br>of Java.</div>
@@ -78,33 +78,19 @@
             
 
             
-<div id="exampleintro1-extra" class="row">
-    <div class="col-md-12">
-  <div class="docs">Let's create and run some Runnable! With Java 8, instead of
- using anonymous classes, we can use <b>lambda expressions</b>.<br>
- The syntax <code>(params) -> statement</code> is used to create an instance of Runnable by implementing its run method.<br>
- This is possible only for interfaces that have only one abstract method, and such interfaces are called <b>functional interfaces</b>.<br>
- Wait, aren't all interface methods abstract? Not anymore. <a href="default-aka-defender-methods.html">See Defender (Default) methods.</a></div>
-</div>
-</div>
 
-<div id="exampleintro1-body" class="row">
+<div id="examplexf-body" class="row">
 
-    <div id="exampleintro1-left" class="col-md-12">
+    <div id="examplexf-left" class="col-md-12">
 
         <!-- START CODE -->
         <div class="copy-snippet">
-            <div><div id="exampleintro1-code" class="code-clean"><div class="example-line clearfix"><span class="_code_cls">Runnable</span> r = () <span class="_code_lambda">-&gt;</span> <span class="_code_cls">System</span><span class="_code_api">.out</span>.println(<span class="_code_str">"Hello!"</span>);</div>
-<div class="example-line clearfix">r<span class="_code_api">.run</span>(); <span class="_code_linecomm">// prints "Hello!"</span></div>
+            <div><div id="examplexf-code" class="code-clean"><div class="example-line clearfix"><span class="pull-left left-code">List&lt;<span class="_code_cls">String</span>&gt; strings = <span class="_code_cls">Arrays</span>.asList(<span class="_code_str">"A"</span>, <span class="_code_str">"bbb"</span>, <span class="_code_str">"CC"</span>, <span class="_code_str">"dd"</span>);</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">["A","bbb","CC","dd"]</span></span></span><span class="pull-left left-code"></div>
 <div class="empty-line clearfix">&nbsp;</div>
-<div class="empty-line clearfix">&nbsp;</div>
-<div class="comment-line clearfix"><span class="_code_comment">// Before Java 8, we had to write code like this:</span></div>
-<div class="example-line clearfix"><span class="_code_cls">Runnable</span> r = <span class="_code_kw">new</span> <span class="_code_cls">Runnable</span>() {</div>
-<div class="example-line clearfix">&nbsp;	<span class="_code_ann">@Override</span></div>
-<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">public</span> <span class="_code_kw">void</span> run() {</div>
-<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_cls">System</span><span class="_code_api">.out</span>.println(<span class="_code_str">"Hello!"</span>);</div>
-<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
-<div class="example-line clearfix">};</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Map the strings to UPPERCASE and join them with the <span class="text-box">:</span> separator</span></div>
+<div class="example-line clearfix"><span class="_code_cls">String</span> joined = strings<span class="_code_api">.stream</span>()</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.map</span>(<span class="_code_cls">String</span>::toUpperCase)</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.collect</span>(<span class="_code_cls">Collectors</span>.joining(<span class="_code_str">":"</span>));</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">"A:BBB:CC:DD"</span></span></span></div>
 </div></div>
         </div>
         <!-- END CODE -->

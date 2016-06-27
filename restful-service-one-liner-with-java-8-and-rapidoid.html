@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
+    <script src="rapidoid.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="docs.css" type="text/css" rel="stylesheet"/>
+    <link href="rapidoid.min.css" type="text/css" rel="stylesheet"/>
+    <link href="theme-default.css" type="text/css" rel="stylesheet"/>
+
+    <title>Java 8 Resources - RESTful service one-liner with Java 8 and Rapidoid</title>
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+
+</head>
+
+
+<body class="rapidoid">
+
+<nav role="navigation" class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button data-target="#collapsable" class="navbar-toggle collapsed" data-toggle="collapse" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Java 8 Resources</a>
+        </div>
+        <div id="collapsable" class="collapse navbar-collapse">
+
+            <div class="navbar-brand navbar-right">
+
+                <script type="IN/Share" data-url="http://www.java8.org/" data-counter="right"></script>
+
+                <span class="g-plusone" data-size="medium"></span>
+
+                <a rel="nofollow" href="https://twitter.com/share" rel="nofollow"
+                   class="twitter-share-button navbar-btn" data-url="http://www.java8.org" data-text="Java 8 Resources"
+                   data-size="small">Tweet</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-10">
+            <h2>RESTful service one-liner with Java 8 and Rapidoid</h2>
+        </div>
+        <div class="col-md-2">
+            <div class="unofficial">This is <b>NOT</b> the official website <br>of Java.</div>
+
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-10">
+            
+
+            
+<div id="examplerap1-extra" class="row">
+    <div class="col-md-12">
+  <div class="docs">Let's see why <b>Java 8 is so great</b>!<br><br>
+ We can start an embedded <a rel="nofollow" href="http://www.rapidoid.org"><b>Rapidoid</b></a> web server and implement a simple RESTful service
+ with 1 line of code (and Rapidoid):</div>
+</div>
+</div>
+
+<div id="examplerap1-body" class="row">
+
+    <div id="examplerap1-left" class="col-md-8">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplerap1-code" class="code-clean"><div class="example-line clearfix"><span class="_code_api">On</span><span class="_code_api">.get</span>(<span class="_code_str">"/size"</span>)<span class="_code_api">.json</span>((<span class="_code_cls">String</span> msg) <span class="_code_lambda">-&gt;</span> msg.length());</div>
+</div></div>
+        </div>
+        <!-- END CODE -->
+
+    </div>
+
+    <div id="examplerap1-right" class="col-md-4">
+        <div id="examplerap1-results" class="results">
+            <div>
+    <span class="badge eg-GET eg-verb">GET</span> <span class="badge eg-uri">/size?msg=xyz</span>
+</div>
+
+<div class="eg-result">
+    <!-- EXAMPLE#rap1 RESULT STARTS HERE -->
+    3
+    <!-- EXAMPLE#rap1 RESULT ENDS HERE -->
+</div>
+
+
+            <div>
+    <span class="badge eg-GET eg-verb">GET</span> <span class="badge eg-uri">/size?msg=hello</span>
+</div>
+
+<div class="eg-result">
+    <!-- EXAMPLE#rap1 RESULT STARTS HERE -->
+    5
+    <!-- EXAMPLE#rap1 RESULT ENDS HERE -->
+</div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+            <div class="row">
+    <div class="col-md-12">
+        <h4 class="section-caption">Project setup with Maven</h4>
+
+        <div class="docs">
+            To run the example, you need to create a new Java 8 project and configure it properly using Maven:
+        </div>
+
+        <div class="copy-snippet">
+            <div class="maven-code"><div class="example-line clearfix"><span class="_code_tag">&lt;project </span>xmlns=<span class="_code_str">"http://maven.apache.org/POM/4.0.0"</span> xmlns:xsi=<span class="_code_str">"http://www.w3.org/2001/XMLSchema-instance"</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xsi:schemaLocation=<span class="_code_str">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;modelVersion&gt;</span>4.0.0<span class="_code_tag">&lt;/modelVersion&gt;</span></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;groupId&gt;</span>com.example<span class="_code_tag">&lt;/groupId&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;artifactId&gt;</span>my-example<span class="_code_tag">&lt;/artifactId&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="_code_tag">&lt;/version&gt;</span></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;dependencies&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;dependency&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;groupId&gt;</span>org.rapidoid<span class="_code_tag">&lt;/groupId&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;artifactId&gt;</span>rapidoid-quick<span class="_code_tag">&lt;/artifactId&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;version&gt;</span>5.1.8<span class="_code_tag">&lt;/version&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;/dependency&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;/dependencies&gt;</span></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;build&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;plugins&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;plugin&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="_code_tag">&lt;/artifactId&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;version&gt;</span>3.3<span class="_code_tag">&lt;/version&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;configuration&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;source&gt;</span>1.8<span class="_code_tag">&lt;/source&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;target&gt;</span>1.8<span class="_code_tag">&lt;/target&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;/configuration&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;/plugin&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;/plugins&gt;</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_tag">&lt;/build&gt;</span></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix"><span class="_code_tag">&lt;/project&gt;</span></div>
+</div>
+        </div>
+
+        <br>
+        <div class="docs">Building the project with Maven is easy:</div>
+
+        <pre class="maven-code"><span class="_code_api">mvn package</span></pre>
+    </div>
+</div>
+
+        </div>
+
+        <div class="col-md-2">
+            <div class="toc-right">
+    <h3 class="toc-title">Topics:</h3>
+    <div class="toc-wrap">
+        <a class="toc-link" href="java-8-syntax.html">Java 8 Syntax</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="restful-service-one-liner-with-java-8-and-rapidoid.html">RESTful service one-liner with Java 8 and Rapidoid</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="introduction-to-java-8-lambda-expressions.html">Introduction to Java 8 Lambda expressions</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="sorting-a-collection-using-lambda-comparator.html">Sorting a collection using Lambda comparator</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="default-aka-defender-methods.html">Default (aka Defender) methods</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="effectively-final-variables.html">Effectively final variables</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="filtering-and-counting-elements-using-java-8-streams.html">Filtering and counting elements using Java 8 Streams</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="map-and-join-elements-using-java-8-streams.html">Map and join elements using Java 8 Streams</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="filtering-distinct-elements-using-java-8-streams.html">Filtering distinct elements using Java 8 streams</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="calculate-statistics-count-min-max-sum-average.html">Calculate statistics (count, min, max, sum, average)</a>
+    </div>
+</div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+    <div class="col-md-12">
+        <div class="page-footer">
+            <h4>Author of the articles: <a rel="nofollow" href="http://www.nikolche.com">Nikolche Mihajlovski</a></h4>
+            <br>
+            <h5>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.</h5>
+        </div>
+    </div>
+</div>
+
+
+</div> <!-- container -->
+
+<script>
+$(function () {
+  Rapidoid.init();
+});
+
+</script>
+
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47578991-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script async defer>
+!function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http'
+            : 'https';
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, 'script', 'twitter-wjs');
+</script>
+
+
+</body>
+</html>

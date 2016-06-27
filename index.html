@@ -1,262 +1,677 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="google-site-verification" content="WWBdxC8X7MBQlX9izFeckAdjuPnEF-2KIh9A60m89SQ" />
-<meta name="majestic-site-verification" content="MJ12_7d8b31b7-5931-4558-a754-543d98f53b50">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
 
-<link href="default.css" type="text/css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
 
-<title>Java 8 Resources - Java 8 Cheatsheet</title>
-<meta name="description" content="Java 8 Resources (lambdas, method references, defender methods, streams) - Java 8 Cheatsheet" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
+    <script src="rapidoid.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="docs.css" type="text/css" rel="stylesheet"/>
+    <link href="rapidoid.min.css" type="text/css" rel="stylesheet"/>
+    <link href="theme-default.css" type="text/css" rel="stylesheet"/>
+
+    <title>Java 8 Resources</title>
+
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
 
 </head>
 
-<body>
 
-	<nav class="navbar navbar-default" role="navigation">
+<body class="rapidoid">
 
+<nav role="navigation" class="navbar navbar-default">
+    <div class="container">
         <div class="navbar-header">
-			<a class="navbar-brand" href="/">Java 8 Resources</a>
-			<div class="navbar-brand">
-	            <a href="https://twitter.com/share" rel="nofollow" class="twitter-share-button navbar-btn" 
-					data-url="http://www.java8.org/" data-text="#java8 Java 8 Cheatsheet" data-size="small">Tweet</a>
-				<span class="g-plusone" data-size="medium"></span>
-				<script type="IN/Share" data-url="http://www.java8.org/" data-counter="right"></script>
-				<span id="unofficial">This is NOT the Official Website of Java.</span>            
-			</div>
+            <button data-target="#collapsable" class="navbar-toggle collapsed" data-toggle="collapse" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Java 8 Resources</a>
         </div>
-		
-	</nav>
+        <div id="collapsable" class="collapse navbar-collapse">
 
-	<div class="row">
-		<div class="col-md-9">
-			<div class="content">
-				<h3 class="title text-center">
-					<span class="postName">Java 8 Cheatsheet</span>
-					<span class="author">by Nikolche Mihajlovski, 
-						<a href="http://www.ohmdb.com" rel="nofollow"><img src="assets/ohmdb-logo.png"/></a>
-						<a style="visibility: hidden;" rel="nofollow" href="https://plus.google.com/u/0/101896671685821826925?rel=author">Google</a>
-					</span>
-				</h3>
-				
-				
-<div class="sub text-center">Lambda expression - easy way to implement single-method (aka functional) interface</div>  
+            <div class="navbar-brand navbar-right">
 
-<div class="row row-separated"><div class="col-md-6">
+                <script type="IN/Share" data-url="http://www.java8.org/" data-counter="right"></script>
 
-<div class="caption">Lambda syntax</div>
+                <span class="g-plusone" data-size="medium"></span>
 
-<pre class="prettyprint code"><code>(parameters) -&gt; expression
-(parameters) -&gt; statement
-(parameters) -&gt; { statements }
-</code></pre>
+                <a rel="nofollow" href="https://twitter.com/share" rel="nofollow"
+                   class="twitter-share-button navbar-btn" data-url="http://www.java8.org" data-text="Java 8 Resources"
+                   data-size="small">Tweet</a>
+            </div>
+        </div>
+    </div>
+</nav>
 
-</div><div class="col-md-6">
 
-<div class="caption">Lambda expression examples</div>
+<div class="container">
 
-<pre class="prettyprint code"><code>(int x, int y) -&gt; x + y
-() -&gt; System.out.println(&quot;hi &quot; + s);
-(String s) -&gt; { int n = s.length(); return n; }
-</code></pre>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Java 8 Resources - This is NOT the official website of Java.</h2>
+    </div>
+</div>
 
+
+
+
+
+<div class="row">
+
+<div class="col-md-10">
+<!-- EXAMPLE syntax -->
+
+<div id="java-8-syntax" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="java-8-syntax.html" class="mini-example-title">Java 8 Syntax</a>
+            
+        </h4>
+    </div>
+</div>
+
+
+<div id="examplesyntax-body" class="row">
+
+    <div id="examplesyntax-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplesyntax-code" class="code-clean"><div class="comment-line clearfix"><span class="_code_comment">// Lambda expressions</span></div>
+<div class="example-line clearfix">(parameters) <span class="_code_lambda">-&gt;</span> expression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.g.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="_code_kw">int</span> x, <span class="_code_kw">int</span> y) <span class="_code_lambda">-&gt;</span> x + y</div>
+<div class="example-line clearfix">(parameters) <span class="_code_lambda">-&gt;</span> statement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.g.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;() <span class="_code_lambda">-&gt;</span> <span class="_code_cls">System</span><span class="_code_api">.out</span>.println(<span class="_code_str">"hi "</span> + s)</div>
+<div class="example-line clearfix">(parameters) <span class="_code_lambda">-&gt;</span> { statements }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.g.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="_code_cls">String</span> s) <span class="_code_lambda">-&gt;</span> { <span class="_code_kw">int</span> n = s.length(); <span class="_code_kw">return</span> n; }</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Method references</span></div>
+<div class="example-line clearfix"><span class="_code_cls">Class</span>::staticMethod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.g.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_cls">Arrays</span>.sort(items, <span class="_code_cls">Util</span>::compareItems);</div>
+<div class="example-line clearfix">instance::instanceMethod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.g.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items.forEach(<span class="_code_cls">System</span><span class="_code_api">.out</span>::pr<span class="_code_kw">int</span>);</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Default methods</span></div>
+<div class="example-line clearfix"><span class="_code_kw">interface</span> <span class="_code_cls">InterfaceName</span> {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.g.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">interface</span> <span class="_code_cls">Descriptive</span> {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">default</span> <span class="_code_cls">ReturnType</span> methodName() {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">default</span> <span class="_code_cls">String</span> describe() {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;implementation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">return</span> <span class="_code_str">"fantastic"</span>;</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+<div class="example-line clearfix">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
 </div></div>
+        </div>
+        <!-- END CODE -->
 
-<div class="row row-separated"><div class="col-md-6">
+    </div>
 
-<div class="caption">Run a Runnable</div>
+</div>
 
-<pre class="prettyprint code"><code>Runnable r = () -&gt; System.out.println(&quot;Hello!&quot;);
-r.run();
-</code></pre>
 
-</div><div class="col-md-6">
 
-<div class="caption">The PI function</div>
 
-<pre class="prettyprint code"><code>Callable&lt;Double&gt; pi = () -&gt; 3.14;
-Double p = pi.call();
-</code></pre>
 
+
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
+
+<!-- EXAMPLE rap1 -->
+
+<div id="restful-service-one-liner-with-java-8-and-rapidoid" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="restful-service-one-liner-with-java-8-and-rapidoid.html" class="mini-example-title">RESTful service one-liner with Java 8 and Rapidoid</a>
+            
+        </h4>
+    </div>
+</div>
+
+<div id="examplerap1-extra" class="row">
+    <div class="col-md-12">
+  <div class="docs">Let's see why <b>Java 8 is so great</b>!<br><br>
+ We can start an embedded <a rel="nofollow" href="http://www.rapidoid.org"><b>Rapidoid</b></a> web server and implement a simple RESTful service
+ with 1 line of code (and Rapidoid):</div>
+</div>
+</div>
+
+<div id="examplerap1-body" class="row">
+
+    <div id="examplerap1-left" class="col-md-8">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplerap1-code" class="code-clean"><div class="example-line clearfix"><span class="_code_api">On</span><span class="_code_api">.get</span>(<span class="_code_str">"/size"</span>)<span class="_code_api">.json</span>((<span class="_code_cls">String</span> msg) <span class="_code_lambda">-&gt;</span> msg.length());</div>
 </div></div>
+        </div>
+        <!-- END CODE -->
 
-<div class="row row-separated"><div class="col-md-6">
+    </div>
 
-<div class="caption">Sort strings by length</div>
+    <div id="examplerap1-right" class="col-md-4">
+        <div id="examplerap1-results" class="results">
+            <div>
+    <span class="badge eg-GET eg-verb">GET</span> <span class="badge eg-uri">/size?msg=xyz</span>
+</div>
 
-<pre class="prettyprint code"><code>String[] words = {&quot;aaa&quot;, &quot;b&quot;, &quot;cc&quot;};
-Arrays.sort(words, (s1, s2) -&gt; s1.length() - s2.length());
+<div class="eg-result">
+    <!-- EXAMPLE#rap1 RESULT STARTS HERE -->
+    3
+    <!-- EXAMPLE#rap1 RESULT ENDS HERE -->
+</div>
 
-&#x2F;&#x2F; equivalent to:
-Arrays.sort(words, (String s1, String s2) -&gt; s1.length() - s2.length());
-</code></pre>
 
-</div><div class="col-md-6">
+            <div>
+    <span class="badge eg-GET eg-verb">GET</span> <span class="badge eg-uri">/size?msg=hello</span>
+</div>
 
-<div class="caption">Effectively final variables can be referenced in lambdas</div>
+<div class="eg-result">
+    <!-- EXAMPLE#rap1 RESULT STARTS HERE -->
+    5
+    <!-- EXAMPLE#rap1 RESULT ENDS HERE -->
+</div>
 
-<pre class="prettyprint code"><code>&#x2F;&#x2F; s is effectively final (not changed anywhere)
-String s = &quot;foo&quot;;
 
-&#x2F;&#x2F; s can be referenced in the lambda
-Runnable r = () -&gt; System.out.println(s);
-</code></pre>
+        </div>
+    </div>
+</div>
 
+
+
+
+
+
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
+
+<!-- EXAMPLE intro1 -->
+
+<div id="introduction-to-java-8-lambda-expressions" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="introduction-to-java-8-lambda-expressions.html" class="mini-example-title">Introduction to Java 8 Lambda expressions</a>
+            
+        </h4>
+    </div>
+</div>
+
+<div id="exampleintro1-extra" class="row">
+    <div class="col-md-12">
+  <div class="docs">Let's create and run some Runnable! With Java 8, instead of
+ using anonymous classes, we can use <b>lambda expressions</b>.<br>
+ The syntax <code>(params) -> statement</code> is used to create an instance of Runnable by implementing its run method.<br>
+ This is possible only for interfaces that have only one abstract method, and such interfaces are called <b>functional interfaces</b>.<br>
+ Wait, aren't all interface methods abstract? Not anymore. <a href="default-aka-defender-methods.html">See Defender (Default) methods.</a></div>
+</div>
+</div>
+
+<div id="exampleintro1-body" class="row">
+
+    <div id="exampleintro1-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="exampleintro1-code" class="code-clean"><div class="example-line clearfix"><span class="_code_cls">Runnable</span> r = () <span class="_code_lambda">-&gt;</span> <span class="_code_cls">System</span><span class="_code_api">.out</span>.println(<span class="_code_str">"Hello!"</span>);</div>
+<div class="example-line clearfix">r<span class="_code_api">.run</span>(); <span class="_code_linecomm">// prints "Hello!"</span></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Before Java 8, we had to write code like this:</span></div>
+<div class="example-line clearfix"><span class="_code_cls">Runnable</span> r = <span class="_code_kw">new</span> <span class="_code_cls">Runnable</span>() {</div>
+<div class="example-line clearfix">&nbsp;	<span class="_code_ann">@Override</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">public</span> <span class="_code_kw">void</span> run() {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_cls">System</span><span class="_code_api">.out</span>.println(<span class="_code_str">"Hello!"</span>);</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+<div class="example-line clearfix">};</div>
 </div></div>
+        </div>
+        <!-- END CODE -->
 
-<div class="sub text-center">Method reference - easy way to use existing method in a functional way</div>  
+    </div>
 
-<div class="row row-separated"><div class="col-md-6">
+</div>
 
-<div class="caption">Static method reference</div>
 
-<pre class="prettyprint code"><code>&#x2F;&#x2F; Class::staticMethod syntax
-Arrays.sort(items, Util::compareItems);
 
-&#x2F;&#x2F; equivalent to:
-Arrays.sort(items, (a, b) -&gt; Util.compareItems(a, b));
-</code></pre>
 
-</div><div class="col-md-6">
 
-<div class="caption">Instance method reference</div>
 
-<pre class="prettyprint code"><code>&#x2F;&#x2F; instance::instanceMethod syntax
-items.forEach(System.out::print);
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
 
-&#x2F;&#x2F; equivalent to:
-items.forEach((x) -&gt; System.out.print(x));
-</code></pre>
+<!-- EXAMPLE intro2 -->
 
+<div id="sorting-a-collection-using-lambda-comparator" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="sorting-a-collection-using-lambda-comparator.html" class="mini-example-title">Sorting a collection using Lambda comparator</a>
+            
+        </h4>
+    </div>
+</div>
+
+
+<div id="exampleintro2-body" class="row">
+
+    <div id="exampleintro2-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="exampleintro2-code" class="code-clean"><div class="example-line clearfix"><span class="_code_kw">class</span> <span class="_code_cls">Person</span> {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">public</span> <span class="_code_cls">String</span> name;</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">public</span> <span class="_code_kw">int</span> age;</div>
+<div class="example-line clearfix">}</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix"><span class="_code_cls">List</span>&lt;<span class="_code_cls">Person</span>&gt; persons = <span class="_code_kw">new</span> <span class="_code_cls">ArrayList</span>&lt;&gt;(); <span class="_code_linecomm">// TODO we should add some persons to this list</span></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Sorting the persons by name is easy: using lambda to implement the Comparator</span></div>
+<div class="example-line clearfix"><span class="_code_cls">Collections</span>.sort(persons, (p1, p2) <span class="_code_lambda">-&gt;</span> p1<span class="_code_api">.name</span>.compare<span class="_code_api">To</span>(p2<span class="_code_api">.name</span>));</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Before Java 8, we had to write code like this:</span></div>
+<div class="example-line clearfix"><span class="_code_cls">Collections</span>.sort(persons, <span class="_code_kw">new</span> <span class="_code_cls">Comparator</span>&lt;<span class="_code_cls">Person</span>&gt;() {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">public</span> <span class="_code_kw">int</span> compare(<span class="_code_cls">Person</span> p1, <span class="_code_cls">Person</span> p2) {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">return</span> p1<span class="_code_api">.name</span>.compare<span class="_code_api">To</span>(p2<span class="_code_api">.name</span>);</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+<div class="example-line clearfix">});</div>
 </div></div>
+        </div>
+        <!-- END CODE -->
 
-<div class="row row-separated"><div class="col-md-6">
+    </div>
 
-<div class="caption">Reference to a method of arbitrary instance</div>
+</div>
 
-<pre class="prettyprint code"><code>&#x2F;&#x2F; Class::instanceMethod syntax
-items.forEach(Item::publish);
 
-&#x2F;&#x2F; equivalent to:
-items.forEach((x) -&gt; { x.publish(); });
-</code></pre>
 
-</div><div class="col-md-6">
 
-<div class="caption">Constructor reference</div>
 
-<pre class="prettyprint code"><code>ConstructorReference cref = Item::new;
-Item item = cref.constructor();
-</code></pre>
 
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
+
+<!-- EXAMPLE xf6 -->
+
+<div id="default-aka-defender-methods" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="default-aka-defender-methods.html" class="mini-example-title">Default (aka Defender) methods</a>
+            
+        </h4>
+    </div>
+</div>
+
+<div id="examplexf6-extra" class="row">
+    <div class="col-md-12">
+  <div class="docs">Starting from Java 8, a method defined in an interface can have a default implementation:</div>
+</div>
+</div>
+
+<div id="examplexf6-body" class="row">
+
+    <div id="examplexf6-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplexf6-code" class="code-clean"><div class="example-line clearfix"><span class="pull-left left-code"><span class="_code_kw">interface</span> <span class="_code_cls">Descriptive</span> {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">default</span> <span class="_code_cls">String</span> desc() {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">return</span> <span class="_code_str">"fantastic"</span>;</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+<div class="example-line clearfix">}</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix"><span class="_code_kw">class</span> <span class="_code_cls">Item</span> <span class="_code_kw">implements</span> <span class="_code_cls">Descriptive</span> {</div>
+<div class="comment-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_linecomm">// the method "desc" is not implemented here</span></div>
+<div class="example-line clearfix">}</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix"><span class="_code_cls">Item</span> item = <span class="_code_kw">new</span> <span class="_code_cls">Item</span>();</div>
+<div class="example-line clearfix">item<span class="_code_api">.desc</span>();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">"fantastic"</span></span></span><span class="pull-left left-code"></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix"><span class="_code_kw">class</span> <span class="_code_cls">Book</span> <span class="_code_kw">implements</span> <span class="_code_cls">Descriptive</span> {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_ann">@Override</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">public</span> <span class="_code_cls">String</span> desc() {</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_kw">return</span> <span class="_code_str">"Cool book!"</span>;</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+<div class="example-line clearfix">}</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix"><span class="_code_cls">Book</span> book = <span class="_code_kw">new</span> <span class="_code_cls">Book</span>();</div>
+<div class="example-line clearfix">book<span class="_code_api">.desc</span>();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">"Cool book!"</span></span></span></div>
 </div></div>
+        </div>
+        <!-- END CODE -->
 
-<div class="sub text-center">Default method - interface method with default implementation</div>  
+    </div>
 
-<div class="row row-separated"><div class="col-md-6">
+</div>
 
-<div class="caption">Defining default methods in interfaces</div>
 
-<pre class="prettyprint code"><code>interface Descriptive {
 
-  default String desc() {
-    return &quot;fantastic&quot;;
-  }
 
-}
-</code></pre>
 
-</div><div class="col-md-6">
 
-<div class="caption">Implementing interface with default method</div>
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
 
-<pre class="prettyprint code"><code>class Item implements Descriptive { }
+<!-- EXAMPLE xd -->
 
-Item x = new Item();
+<div id="effectively-final-variables" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="effectively-final-variables.html" class="mini-example-title">Effectively final variables</a>
+            
+        </h4>
+    </div>
+</div>
 
-&#x2F;&#x2F; prints &quot;fantastic&quot;
-System.out.println(x.desc());
-</code></pre>
+<div id="examplexd-extra" class="row">
+    <div class="col-md-12">
+  <div class="docs">Effectively final variable is a variable that doesn't change its value (a constant).
+ <br>Such variables can be referenced in lambdas without the need to explicitly mark them as "final":</div>
+</div>
+</div>
 
+<div id="examplexd-body" class="row">
+
+    <div id="examplexd-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplexd-code" class="code-clean"><div class="example-line clearfix"><span class="pull-left left-code"><span class="_code_linecomm">// s is effectively final (not changed anywhere)</span></div>
+<div class="example-line clearfix"><span class="_code_cls">String</span> s = <span class="_code_str">"foo"</span>;</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_linecomm">// s can be referenced in the lambda</span></div>
+<div class="example-line clearfix"><span class="_code_cls">Callable</span>&lt;<span class="_code_cls">String</span>&gt; callable = () <span class="_code_lambda">-&gt;</span> s;</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix">callable<span class="_code_api">.call</span>();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">"foo"</span></span></span></div>
 </div></div>
+        </div>
+        <!-- END CODE -->
 
-<div class="sub text-center">Stream - sequence of values</div>  
+    </div>
 
-<div class="row row-separated"><div class="col-md-6">
+</div>
 
-<div class="caption">Count the non-empty strings</div>
 
-<pre class="prettyprint code"><code>List&lt;String&gt; strings = ...;
-long n = strings.stream().filter(x -&gt; !x.isEmpty()).count();
-</code></pre>
 
-</div><div class="col-md-6">
 
-<div class="caption">Join item titles</div>
 
-<pre class="prettyprint code"><code>List&lt;Item&gt; items = ...;
-String names = items.stream().map((x) -&gt; x.getTitle()).collect(Collectors.joining(&quot;, &quot;));
-</code></pre>
 
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
+
+<!-- EXAMPLE x7 -->
+
+<div id="filtering-and-counting-elements-using-java-8-streams" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="filtering-and-counting-elements-using-java-8-streams.html" class="mini-example-title">Filtering and counting elements using Java 8 Streams</a>
+            
+        </h4>
+    </div>
+</div>
+
+
+<div id="examplex7-body" class="row">
+
+    <div id="examplex7-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplex7-code" class="code-clean"><div class="example-line clearfix"><span class="pull-left left-code">List&lt;<span class="_code_cls">String</span>&gt; strings = <span class="_code_cls">Arrays</span>.asList(<span class="_code_str">"a"</span>, <span class="_code_str">""</span>, <span class="_code_str">"b"</span>, <span class="_code_str">""</span>, <span class="_code_str">"c"</span>);</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Count the non-empty strings</span></div>
+<div class="example-line clearfix"><span class="_code_kw">long</span> nonEmptyCount = strings<span class="_code_api">.stream</span>()</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.filter</span>(x <span class="_code_lambda">-&gt;</span> !x<span class="_code_api">.isEmpty</span>())</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.count</span>();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">3</span></span></span><span class="pull-left left-code"></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Count the empty strings</span></div>
+<div class="example-line clearfix"><span class="_code_kw">long</span> emptyCount = strings<span class="_code_api">.stream</span>()</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.filter</span>(<span class="_code_cls">String</span>::isEmpty) <span class="_code_linecomm">// same as .filter(x -> x.isEmpty())</span></div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.count</span>();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">2</span></span></span></div>
 </div></div>
+        </div>
+        <!-- END CODE -->
 
-<div class="row row-separated"><div class="col-md-6">
+    </div>
 
-<div class="caption">Get distinct countries from cities</div>
+</div>
 
-<pre class="prettyprint code"><code>List&lt;City&gt; cities = ...;
-List&lt;Country&gt; countries = cities.stream().map((c) -&gt; c.getCountry()).distinct().collect(Collectors.toList());
-</code></pre>
 
-</div><div class="col-md-6">
 
-<div class="caption">Get count, min, max, sum, and average statistics for items rating</div>
 
-<pre class="prettyprint code"><code>List&lt;Item&gt; items = ...;
-IntSummaryStatistics stats = items.stream().mapToInt((x) -&gt; x.getRating()).summaryStatistics();
-</code></pre>
 
+
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
+
+<!-- EXAMPLE xf -->
+
+<div id="map-and-join-elements-using-java-8-streams" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="map-and-join-elements-using-java-8-streams.html" class="mini-example-title">Map and join elements using Java 8 Streams</a>
+            
+        </h4>
+    </div>
+</div>
+
+
+<div id="examplexf-body" class="row">
+
+    <div id="examplexf-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplexf-code" class="code-clean"><div class="example-line clearfix"><span class="pull-left left-code">List&lt;<span class="_code_cls">String</span>&gt; strings = <span class="_code_cls">Arrays</span>.asList(<span class="_code_str">"A"</span>, <span class="_code_str">"bbb"</span>, <span class="_code_str">"CC"</span>, <span class="_code_str">"dd"</span>);</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">["A","bbb","CC","dd"]</span></span></span><span class="pull-left left-code"></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="comment-line clearfix"><span class="_code_comment">// Map the strings to UPPERCASE and join them with the <span class="text-box">:</span> separator</span></div>
+<div class="example-line clearfix"><span class="_code_cls">String</span> joined = strings<span class="_code_api">.stream</span>()</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.map</span>(<span class="_code_cls">String</span>::toUpperCase)</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.collect</span>(<span class="_code_cls">Collectors</span>.joining(<span class="_code_str">":"</span>));</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">"A:BBB:CC:DD"</span></span></span></div>
 </div></div>
+        </div>
+        <!-- END CODE -->
 
-				
-			</div>
-		</div>
+    </div>
 
-		<div id="right" class="col-md-3">
-			<h3>Sponsors:</h3>
-			<div id="sponsors">
-				<a rel="nofollow" href="http://www.ohmdb.com"><img src="assets/ohmdb-logo.png"/><br/>
-				<pre class="prettyprint right-snippet">
-<code>OhmDB db = Ohm.db("my.db");
-Table&lt;Item&gt; items;
-items = db.table(Item.class);
-Item foo = new Item("foo");
-long id = items.insert(foo);
-</code></pre>OhmDB - The Irresistible Database for Java</a>
-<br/><br/>			
-			<a rel="nofollow" href="http://empty"><img id="sponsor-logo" src="assets/empty.png"/></a><br/>
-			</div>
-			<h3>All articles:</h3>
-			<div id="articles">
-			<p><a href="caching-with-ConcurrentHashMap-in-java-8.html">Caching with ConcurrentHashMap and computeIfAbsent</a></p><p><a href="/">Java 8 Cheatsheet</a></p><p><a href="introduction-to-java-8-lambda-expressions.html">Introduction to Java 8 Lambda expressions</a></p>
-			</div>
-		</div>
-	</div>
+</div>
 
-	<div class="row">
-		<div class="col-md-12">
-			<div id="footer" class="text-center">
-				<p>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of
-					their respective owners.</p>
-			</div>
-		</div>
-	</div>
 
-	<script type="text/javascript" src="content.js"></script>
-	
-	
+
+
+
+
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
+
+<!-- EXAMPLE xf8 -->
+
+<div id="filtering-distinct-elements-using-java-8-streams" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="filtering-distinct-elements-using-java-8-streams.html" class="mini-example-title">Filtering distinct elements using Java 8 streams</a>
+            
+        </h4>
+    </div>
+</div>
+
+
+<div id="examplexf8-body" class="row">
+
+    <div id="examplexf8-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplexf8-code" class="code-clean"><div class="example-line clearfix"><span class="pull-left left-code">List&lt;<span class="_code_cls">String</span>&gt; words = <span class="_code_cls">Arrays</span>.asList(<span class="_code_str">"hello"</span>, <span class="_code_str">"cool"</span>, <span class="_code_str">"Java8"</span>, <span class="_code_str">"world!"</span>);</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">["hello","cool","Java8","world!"]</span></span></span><span class="pull-left left-code"></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix"><span class="_code_cls">List</span>&lt;<span class="_code_cls">Integer</span>&gt; lengths = words<span class="_code_api">.stream</span>()</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.map</span>(<span class="_code_cls">String</span>::length)</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.distinct()</div>
+<div class="example-line clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="_code_api">.collect</span>(<span class="_code_cls">Collectors</span><span class="_code_api">.toList</span>());</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">[5,4,6]</span></span></span></div>
+</div></div>
+        </div>
+        <!-- END CODE -->
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
+
+<!-- EXAMPLE xf9 -->
+
+<div id="calculate-statistics-count-min-max-sum-average" class="row">
+    <div class="col-md-12">
+        <h4 class="caption">
+            <a href="calculate-statistics-count-min-max-sum-average.html" class="mini-example-title">Calculate statistics (count, min, max, sum, average)</a>
+            
+        </h4>
+    </div>
+</div>
+
+
+<div id="examplexf9-body" class="row">
+
+    <div id="examplexf9-left" class="col-md-12">
+
+        <!-- START CODE -->
+        <div class="copy-snippet">
+            <div><div id="examplexf9-code" class="code-clean"><div class="example-line clearfix"><span class="pull-left left-code">List&lt;<span class="_code_cls">Integer</span>&gt; numbers = <span class="_code_cls">Arrays</span>.asList(<span class="_code_num">10</span>, <span class="_code_num">3</span>, <span class="_code_num">2</span>, <span class="_code_num">5</span>, <span class="_code_num">9</span>, <span class="_code_num">4</span>);</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">[10,3,2,5,9,4]</span></span></span><span class="pull-left left-code"></div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix"><span class="_code_cls">IntSummaryStatistics</span> stats = numbers<span class="_code_api">.stream</span>().mapToInt(x <span class="_code_lambda">-&gt;</span> x).summaryStatistics();</div>
+<div class="empty-line clearfix">&nbsp;</div>
+<div class="example-line clearfix">stats.getCount();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">6</span></span></span><span class="pull-left left-code"></div>
+<div class="example-line clearfix">stats.getMin();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">2</span></span></span><span class="pull-left left-code"></div>
+<div class="example-line clearfix">stats.getMax();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">10</span></span></span><span class="pull-left left-code"></div>
+<div class="example-line clearfix">stats.getSum();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">33</span></span></span><span class="pull-left left-code"></div>
+<div class="example-line clearfix">stats.getAverage();</span><span class="pull-right show-code"><span class="object-details"><span class="object-value">5.5</span></span></span></div>
+</div></div>
+        </div>
+        <!-- END CODE -->
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="row row-separated-micro">
+  <div class="col-md-12"></div>
+</div>
+
+
+</div>
+
+<div class="col-md-2">
+<div class="toc-right">
+    <h3 class="toc-title">Contents:</h3>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#java-8-syntax">Java 8 Syntax</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#restful-service-one-liner-with-java-8-and-rapidoid">RESTful service one-liner with Java 8 and Rapidoid</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#introduction-to-java-8-lambda-expressions">Introduction to Java 8 Lambda expressions</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#sorting-a-collection-using-lambda-comparator">Sorting a collection using Lambda comparator</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#default-aka-defender-methods">Default (aka Defender) methods</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#effectively-final-variables">Effectively final variables</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#filtering-and-counting-elements-using-java-8-streams">Filtering and counting elements using Java 8 Streams</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#map-and-join-elements-using-java-8-streams">Map and join elements using Java 8 Streams</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#filtering-distinct-elements-using-java-8-streams">Filtering distinct elements using Java 8 streams</a>
+    </div>
+    <div class="toc-wrap">
+        <a class="toc-link" href="#calculate-statistics-count-min-max-sum-average">Calculate statistics (count, min, max, sum, average)</a>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-footer">
+            <h4>Author of the articles: <a rel="nofollow" href="http://www.nikolche.com">Nikolche Mihajlovski</a></h4>
+            <br>
+            <h5>Oracle and Java are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.</h5>
+        </div>
+    </div>
+</div>
+
+
+</div> <!-- container -->
+
+<script>
+$(function () {
+  Rapidoid.init();
+});
+
+</script>
+
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47578991-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script async defer>
+!function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http'
+            : 'https';
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, 'script', 'twitter-wjs');
+</script>
+
+
 </body>
 </html>

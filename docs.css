@@ -1,0 +1,350 @@
+.docker-code {
+	color: #777;
+	font-size: 16px;
+	margin-left: 10px;
+}
+
+.not-found {
+	color: #777;
+	font-weight: bold;
+}
+
+div.sep-example {
+	padding-top: 3px !important;
+}
+
+body {
+	background-color: #FFF !important;
+}
+
+.caption {
+	margin-bottom: 10px;
+	margin-top: 5px;
+	padding: 7px 0px;
+	border-top: 0px;
+	border-bottom: 1px solid;
+	border-left: 0px;
+	border-right: 0px;
+	border-color: #CCC;
+	font-size: 20px;
+	font-weight: bold;
+	color: #555 !important;
+}
+
+.module-header {
+	font-size: 18px;
+	font-weight: bold;
+	color: #555;
+}
+
+.module-desc {
+	margin: 18px 0px;
+	font-size: 16px;
+	color: #333;
+	border-left: 3px solid #AAA;
+	padding-left: 10px;
+	padding-bottom: 7px;
+	padding-top: 7px;
+}
+
+.badge-eg-num {
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: middle;
+	background-color: #967;
+	color: #FFF;
+}
+
+.badge-docker {
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: middle;
+	background-color: #679;
+	color: #FFF;
+}
+
+.badge-module {
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: middle;
+	background-color: #967;
+	color: #FFF;
+}
+
+.embedd {
+	width: 100% !important;
+	height: 500px !important;
+}
+
+#gen {
+	color: black;
+}
+
+#main_title {
+	margin-bottom: 15px;
+}
+
+#main_subtitle {
+	margin-bottom: 25px;
+}
+
+.subtle {
+	color: #555;
+	font-size: 14px;
+}
+
+.app-example-title {
+	margin-bottom: 10px;
+}
+
+.eg-verb {
+	color: white;
+	font-weight: bold;
+}
+
+.eg-GET {
+	background-color: #475;
+}
+
+.eg-POST {
+	background-color: #744;
+}
+
+.eg-uri {
+	background-color: #77A;
+	color: white;
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.eg-result {
+	background-color: #FFF;
+	border: 1px dotted;
+	border-color: #BBB;
+	margin-top: 10px;
+	margin-bottom: 25px;
+	padding: 2px;
+}
+
+.eg-error {
+	background-color: #FFF;
+	border: none;
+	margin-top: 10px;
+	margin-bottom: 25px;
+	padding: 2px;
+}
+
+.post-data {
+	margin-top: 3px;
+}
+
+pre {
+	font-size: 13px;
+}
+
+.eg_code {
+	margin-bottom: 25px;
+}
+
+.code-clean {
+	border: none !important;
+	margin-bottom: 25px;
+	background: none;
+	box-shadow: none !important;
+}
+
+.low-level-desc {
+	padding: 5px;
+	font-size: 14px;
+	border-color: #BBB;
+}
+
+.option-x {
+	padding: 4px;
+	font-size: 18px;
+	border: 1px solid;
+	border-color: #733;
+	color: #733;
+	margin-right: 15px;
+}
+
+.modules-right {
+	padding: 0px 5px;
+	border: solid #ddd 1px;
+	border-radius: 15px;
+	text-align: center;
+}
+
+.module-title {
+	font-size: 16px;
+}
+
+.module-box {
+	font-size: 13px;
+}
+
+.module-wrap {
+	border-top: #ccc dotted 1px;
+	padding: 7px 0px;
+}
+
+#mc_embed_signup {
+	margin-top: 8px;
+}
+
+#mce-EMAIL {
+	width: 190px;
+}
+
+.stats-field {
+	margin-right: 20px;
+}
+
+.module-stats {
+	margin-top: 15px;
+}
+
+.stats-value {
+	font-weight: bold;
+}
+
+.object-details {
+	font-size: 11px;
+	line-height: 2.6;
+	padding: 2px 3px;
+	border: #aaa solid 1px;
+	font-weight: bold;
+	border-radius: 5px;
+	color: #777;
+}
+
+.object-value {
+	padding: 2px 3px;
+}
+
+.object-class {
+	padding: 2px 3px;
+	border-left: #999 solid 1px;
+	color: #888;
+}
+
+.show-code {
+	margin-top: -4px;
+}
+
+.maven-code {
+	font-size: 12px;
+	border: #eee solid 1px !important;
+	border-radius: 0px;
+	background: none;
+}
+
+pre {
+	border: none !important;
+}
+
+.text-box {
+	padding: 0px 3px;
+	border: #aaa solid 1px !important;
+	border-radius: 5px;
+}
+
+.frameworks {
+	font-weight: bold;
+}
+
+.example-line {
+	font-size: 14px;
+	font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+	line-height: 1.5;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.comment-line {
+	font-size: 14px;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+._code_comment {
+	font-size: 12px !important;
+}
+
+._code_comment .text-box {
+	padding: 1px;
+	padding-bottom: 1px;
+	border: #aaa solid 1px !important;
+	border-radius: 1px;
+}
+
+.empty-line {
+	font-size: 8px;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.eg_title {
+	margin-bottom: 5px;
+}
+
+.show-gui {
+	border: dashed 1px #ccc;
+	padding: 5px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.page-footer {
+	text-align: center;
+	font-size: 12px;
+	word-wrap: break-word;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#group-email {
+	font-size: 14px;
+	word-wrap: break-word;
+	margin-top: 18px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.docs {
+	font-size: 14px;
+	padding-bottom: 15px;
+}
+
+.api-docs td {
+	padding: 5px !important;
+	vertical-align: middle !important;
+}
+
+.api-docs pre {
+	padding: 0px !important;
+	margin: 0px !important;
+	vertical-align: middle !important;
+}
+
+.toc-wrap {
+    margin-bottom: 10px;
+}
+
+.toc-link {
+    color: #777 !important;
+    font-color: #777 !important;
+}
+
+.toc-title {
+    font-size: 18px;
+    text-align: left !important;
+}
+
+.unofficial {
+    font-size: 18px;
+    text-align: center !important;
+    color: #500;
+    border: dashed 1px #500;
+    padding: 7px 3px;
+}
